@@ -5,6 +5,8 @@ cargo
 ccls
 clang-format
 cmake
+ctags-etags
+fd-find
 fzf
 gcc
 gcc-c++
@@ -17,6 +19,7 @@ nodejs
 patch
 pkgconfig
 ranger
+ripgrep
 tmux
 unzip
 zathura

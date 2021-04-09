@@ -5,6 +5,8 @@ function get_distro() {
 }
 
 function install_packages() {
+    set -e
+
     if [ "$(get_distro | grep -i fedora)" ]; then
         UPDATE_CMD="sudo dnf update"
         INSTALL_CMD="sudo dnf install"
@@ -20,11 +22,12 @@ function install_packages() {
     eval $UPDATE_CMD
     eval $INSTALL_CMD $(cat $PKG_FILE)
 
-    cargo install bottom
-    cargo install gitui
+    set +e
 }
 
 function neovim_setup() {
+    set -e
+
     mdkir .working
     cd .working
     git clone https://github.com/neovim/neovim
@@ -43,9 +46,13 @@ function neovim_setup() {
 
     cd ..
     rm -rf .working
+
+    set +e
 }
 
 function zsh_setup() {
+    set -e
+
     curl -fsSL https://starship.rs/install.sh | bash
 
     SAVE_DIR="$(pwd)"
@@ -58,9 +65,15 @@ function zsh_setup() {
     cd ..
 
     cd $SAVE_DIR
+
+    chsh -s $(which zsh)
+
+    set +e
 }
 
 function link() {
+    set -e
+
     HOME_FILES="$(find . -maxdepth 1 -name "\.*" -type f -not -name ".gitignore")"
     CONFIG_FILES="$(find .config -maxdepth 1)"
     CONFIG_DIR="$HOME/.config"
@@ -79,9 +92,23 @@ function link() {
     for FILE in $SCRIPTS_DIR/*; do
         ln -svf "$(pwd)/$FILE" "$HOME/.local/bin"
     done
+
+    set +e
 }
 
-install_packages
-link
-zsh_setup
-neovim_setup
+function fonts() {
+    set -e
+
+    git clone https://github.com/ryanoasis/nerd-fonts
+    cd nerd-fonts
+    ./install.sh meslo hack fira-code inconsolata terminus
+    cd ..
+    rm -rf nerd-fonts
+
+    set +e
+}
+
+install_packages || echo "Failed to install packages!"
+link || echo "Failed to link configuration files!"
+zsh_setup || echo "Failed to setup ZSH."
+neovim_setup || echo "Failed to setup Neovim"

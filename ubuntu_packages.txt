@@ -5,6 +5,7 @@ cargo
 ccls
 clang-format
 cmake
+fd-find
 fzf
 g++
 gettext
@@ -15,7 +16,9 @@ ninja-build
 nodejs
 pkg-config
 ranger
+ripgrep
 tmux
+uctags
 unzip
 zathura
 zsh

@@ -1,10 +1,9 @@
 #!/bin/bash
 
-set -e
 
-git clone https://github.com/ryanoasis/nerd-fonts
+git clone https://github.com/ryanoasis/nerd-fonts || echo "Already cloned."
 cd nerd-fonts
-./install.sh meslo hack fira-code inconsolata terminus
+./install.sh Hack FiraCode Inconsolata Terminus
 cd ..
 rm -rf nerd-fonts
 

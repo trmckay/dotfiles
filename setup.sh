@@ -16,6 +16,7 @@ function install_packages() {
         INSTALL_CMD="sudo apt install"
         PKG_FILE="./ubuntu_packages.txt"
     else
+        echo "Distribution not explicity supported."
         exit 1
     fi
 

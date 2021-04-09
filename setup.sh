@@ -28,24 +28,22 @@ function install_packages() {
 function neovim_setup() {
     set -e
 
-    mdkir .working
-    cd .working
     git clone https://github.com/neovim/neovim
     cd neovim
 
     make CMAKE_BUILD_TYPE=RelWithDebInfo
     sudo make install
 
-    sudo ln -s /usr/local/bin/nvim /usr/local/bin/vim
-    sudo ln -s /usr/local/bin/nvim /usr/local/bin/vi
+    sudo ln -svf /usr/local/bin/nvim /usr/local/bin/vim
+    sudo ln -svf /usr/local/bin/nvim /usr/local/bin/vi
 
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
     nvim -c PlugClean -c PlugUpdate -c CocUpdate -c PlugInstall -c UpdateRemotePlugins -c qa!
 
-    cd ../..
-    rm -rf .working
+    cd ..
+    rm -rf neovim
 
     set +e
 }
@@ -58,6 +56,7 @@ function zsh_setup() {
     SAVE_DIR="$(pwd)"
     cd "$HOME"
 
+    rm -rf .zsh
     mkdir -p .zsh
     cd .zsh
     git clone https://github.com/jeffreytse/zsh-vi-mode.git
@@ -108,10 +107,10 @@ function fonts() {
     set +e
 }
 
-install_packages || echo "Failed to install packages!"
-link || echo "Failed to link configuration files!"
-zsh_setup || echo "Failed to setup ZSH."
-neovim_setup || echo "Failed to setup Neovim"
+install_packages 2> packages.log || echo "Failed to install packages!"
+link 2> link.log || echo "Failed to link configuration files!"
+zsh_setup 2> zsh.log || echo "Failed to setup ZSH."
+neovim_setup 2> nvim.log || echo "Failed to setup Neovim"
 
 shift 1
 for ARG in "$@"; do

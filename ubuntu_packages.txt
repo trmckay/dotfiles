@@ -1,4 +1,3 @@
-alacritty
 autoconf
 automake
 cargo
@@ -19,3 +18,4 @@ tmux
 unzip
 zathura
 zsh
+universal-ctags

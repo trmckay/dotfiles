@@ -25,7 +25,7 @@ function install_packages() {
 }
 
 function neovim_setup() {
-    mdkir .working
+    mkdir .working
     cd .working
     git clone https://github.com/neovim/neovim
     cd neovim
@@ -41,7 +41,7 @@ function neovim_setup() {
 
     nvim -c PlugClean -c PlugUpdate -c CocUpdate -c PlugInstall -c UpdateRemotePlugins -c qa!
 
-    cd ..
+    cd ../..
     rm -rf .working
 }
 

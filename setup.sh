@@ -44,7 +44,7 @@ function neovim_setup() {
 
     nvim -c PlugClean -c PlugUpdate -c CocUpdate -c PlugInstall -c UpdateRemotePlugins -c qa!
 
-    cd ..
+    cd ../..
     rm -rf .working
 
     set +e

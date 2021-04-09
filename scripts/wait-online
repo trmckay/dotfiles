@@ -1,0 +1,5 @@
+#!/bin/bash
+
+while [ "$(ping -c 1 -q google.com >&/dev/null; echo $?)" != 0 ]; do
+    sleep 3;
+done

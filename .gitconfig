@@ -1,0 +1,16 @@
+[user]
+	email = trs.mckay@gmail.com
+	name = Trevor McKay
+[color]
+	ui = true
+[core]
+	pager = less -r
+[pull]
+	rebase = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main

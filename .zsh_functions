@@ -1,0 +1,43 @@
+#!usr/bin/zsh
+
+function tgz {
+    tar cf - $2 | pigz > $1
+}
+
+function ta {
+    SESSION=$(tmux ls | fzf | cut -d':' -f1)
+
+    if [[ -v SESSION ]]; then
+        tmux attach-session -t $SESSION
+    fi
+}
+
+function tn {
+    if [ "$1" ]; then
+        tmux new-session -A -s "$@"
+    else
+        tmux new-session -A -s "$(basename $(pwd))"
+    fi
+}
+
+function peek() {
+    if [ -d $1 ]; then
+        ls $1
+    else
+        less $1
+    fi
+}
+
+function waitfor {
+    while [ "$(pgrep $1)" ]; do
+        sleep 5;
+    done
+}
+
+function create {
+    FILE="$1"
+    DIR="$(dirname $1)"
+    mkdir -p "$DIR"
+    touch "$FILE"
+    nvim "$FILE"
+}

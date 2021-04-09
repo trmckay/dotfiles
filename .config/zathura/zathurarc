@@ -1,0 +1,15 @@
+map r reload
+map R rotate
+map K zoom in
+map J zoom out
+map W zoom best-fit
+map i recolor
+
+map <C-r> focus_inputbar ":exec rmapi put $FILE /"
+
+set recolor "true"
+set guioptions ""
+set recolor-darkcolor "#f0f0f0"
+set recolor-lightcolor "#202020"
+set default-bg "#000000"
+

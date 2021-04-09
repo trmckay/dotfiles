@@ -1,0 +1,67 @@
+format = """\\[$hostname::$directory\\] \
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$cmake\
+$dart\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$java\
+$julia\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$ruby\
+$rust\
+$swift\
+$terraform\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$env_var\
+$crystal\
+$custom\
+$cmd_duration\
+$line_break\
+$lua\
+$jobs\
+$battery\
+$time\
+$status\
+$character"""
+
+[hostname]
+ssh_only = false
+format = "[$hostname](bold bright-red)"
+disabled = false
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style)"
+style = "bold bright-cyan"
+truncate_to_repo = false
+
+[character]
+success_symbol = "[➜](blue)"
+error_symbol = "[➜](red)"
+
+[rust]
+format = "via [$version](red bold) "
+
+[cmd_duration]
+style = "blue"

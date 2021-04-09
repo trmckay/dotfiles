@@ -7,11 +7,11 @@ function get_distro() {
 function install_packages() {
     set -e
 
-    if [ "$(get_distro | grep -i fedora)" ]; then
+    if get_distro | grep -qe fedora; then
         UPDATE_CMD="sudo dnf update"
         INSTALL_CMD="sudo dnf install"
         PKG_FILE="./fedora_packages.txt"
-    elif [ "$(get_distro | grep -i ubuntu)" ]; then
+    elif get_distro | grep -qe ubuntu; then
         UPDATE_CMD="sudo apt update -y && sudo apt upgrade -y"
         INSTALL_CMD="sudo apt install"
         PKG_FILE="./ubuntu_packages.txt"
@@ -19,8 +19,8 @@ function install_packages() {
         exit 1
     fi
 
-    eval $UPDATE_CMD
-    eval $INSTALL_CMD $(cat $PKG_FILE)
+    eval "$UPDATE_CMD"
+    eval "$INSTALL_CMD" "$(cat $PKG_FILE)"
 
     set +e
 }
@@ -56,7 +56,7 @@ function zsh_setup() {
     curl -fsSL https://starship.rs/install.sh | bash
 
     SAVE_DIR="$(pwd)"
-    cd $HOME
+    cd "$HOME"
 
     mkdir -p .zsh
     cd .zsh
@@ -64,9 +64,9 @@ function zsh_setup() {
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
     cd ..
 
-    cd $SAVE_DIR
+    cd "$SAVE_DIR"
 
-    chsh -s $(which zsh)
+    chsh -s "$(which zsh)"
 
     set +e
 }
@@ -87,9 +87,9 @@ function link() {
         ln -svf "$(pwd)/$FILE" "$CONFIG_DIR"
     done
 
-    mkdir -p $HOME/.local/bin
+    mkdir -p "$HOME"/.local/bin
 
-    for FILE in $SCRIPTS_DIR/*; do
+    for FILE in "$SCRIPTS_DIR"/*; do
         ln -svf "$(pwd)/$FILE" "$HOME/.local/bin"
     done
 
@@ -112,3 +112,10 @@ install_packages || echo "Failed to install packages!"
 link || echo "Failed to link configuration files!"
 zsh_setup || echo "Failed to setup ZSH."
 neovim_setup || echo "Failed to setup Neovim"
+
+shift 1
+for ARG in "$@"; do
+    if [ "$ARG" == "--fonts" ]; then
+        fonts
+    fi
+done

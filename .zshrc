@@ -9,6 +9,7 @@ function options() {
     export TERM=xterm-256color
     setopt correct
 }
+
 function plugins() {
     ZSH_THEME=""
     plugins=(git colored-man-pages z)

@@ -10,13 +10,13 @@ window:
     lines: 40
 font:
   normal:
-    family: Fira Mono
+    family: FiraCode Nerd Font Mono
     style: Light
   bold:
-    family: Fira Mono
+    family: FiraCode Nerd Font Mono
     style: Medium
   italic:
-    family: Fira Mono
+    family: FiraCode Nerd Font Mono
     style: Light Italic
   size: 11
 background_opacity: 1

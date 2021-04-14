@@ -109,38 +109,20 @@
 " === PLUGINS ===
 
 call plug#begin()
-    " THEMES/AESTHETICS
-    Plug 'ryanoasis/vim-devicons'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'morhetz/gruvbox'
     Plug 'rakr/vim-togglebg'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-    " SHORTCUTS/CONVENIENCES/FEATURES
-    Plug 'honza/vim-snippets'
     Plug 'tpope/vim-commentary'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'godlygeek/tabular'
     Plug 'skywind3000/asyncrun.vim'
     Plug 'tpope/vim-surround'
-    Plug 'romainl/vim-qf'
-    Plug 'tpope/vim-eunuch'
     Plug 'sbdchd/neoformat'
-    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-
-    " PROGRAMMING
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'metakirby5/codi.vim'
-    Plug 'cespare/vim-toml'
     Plug 'preservim/tagbar'
-    Plug 'tikhomirov/vim-glsl'
-
-    " GIT/VC
-    Plug 'tpope/vim-fugitive'
-
-    " MARKDOWN/LATEX TYPESETTING
     Plug 'plasticboy/vim-markdown'
     Plug 'lervag/vimtex'
 call plug#end()
@@ -187,42 +169,27 @@ call plug#end()
     let g:shfmt_opt="-ci"
 
     " === COC-NVIM ===
-    " turn of linting when it's distracting
     nnoremap <leader>cy <cmd>CocEnable<cr>
     nnoremap <leader>cn <cmd>CocDisable<cr>
-    " folding
     command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-    " statusline
     set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-    " trigger with tab; mimics VSCode, Jetbrains, etc.
     inoremap <silent><expr> <TAB>
           \ pumvisible() ? "\<C-n>" :
           \ <SID>check_back_space() ? "\<TAB>" :
           \ coc#refresh()
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-    " abort autocomplete
     function! s:check_back_space() abort
           let col = col('.') - 1
           return !col || getline('.')[col - 1]  =~# '\s'
     endfunction
-    " complete auto
     inoremap <silent><expr> <C-space> coc#refresh()
-    " goto definition
     nmap <silent> gd <Plug>(coc-definition)
-    " goto type definition
     nmap <silent> gy <Plug>(coc-type-definition)
-    " goto implementation
     nmap <silent> gi <Plug>(coc-implementation)
-    " goto references
     nmap <silent> gr CocCommand fzf-preview.CocReferences <cr>
-    " rename current symbol
     nmap <leader>rn <Plug>(coc-rename)
-    " open diagnostics
     nmap <leader>d <cmd>CocDiagnostics<cr>
-    " highlight the symbol and its references when holding the cursor
     autocmd CursorHold * silent call CocActionAsync('highlight')
-    " explorer
-    " use K to show documentation in preview window
     nnoremap <silent> K :call <SID>show_documentation()<CR>
     function! s:show_documentation()
         if (index(['vim','help'], &filetype) >= 0)
@@ -231,13 +198,10 @@ call plug#end()
             call CocActionAsync('doHover')
         endif
     endfunction
-    " go to next diagnostic
     nmap <silent> [g <Plug>(coc-diagnostic-prev)
     nmap <silent> ]g <Plug>(coc-diagnostic-next)
     nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-    " find symbol of current document
     nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-    " search workspace symbols
     nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 
     " === ASYNCRUN ===
@@ -259,33 +223,21 @@ call plug#end()
     autocmd BufWritePost *.md
         \ if c_pandoc_article | call Cpa() | endif
 
-    " === QUICKSCOPE ===
-    let g:qs_highlight_on_keys = ['f', 'F']
-
     " === TAGBAR ===
     nmap <leader>i :TagbarToggle<CR>
     autocmd BufNew *.{c,cpp,rs,h,py} TagbarOpen
-
-    " === GLSL ===
-    autocmd! BufNewFile,BufRead *.vs,*.fs,*.glsl,*.cg set ft=glsl
 
     " === FZF ===
     nnoremap <leader>f <cmd>Lines<cr>
     nnoremap <leader>e <cmd>Files<cr>
     nnoremap <leader>n <cmd>tabnew<cr><cmd>Files<cr>
 
-    " === GIT FUGITIVE ===
-    nnoremap <leader>ga <cmd> Git add % <cr>
-    nnoremap <leader>gc <cmd> Git commit <cr>
-    nnoremap <leader>gp <cmd> Git push <cr>
-    nnoremap <leader>gs <cmd> Git <cr>
-    nnoremap <leader>gv <cmd> Git diff % <cr>
-    nnoremap <leader>gl <cmd> Git log <cr>
-
-    " === ULTISNIPS ===
-    let g:UltiSnipsExpandTrigger='<tab>'
-    let g:UltiSnipsJumpForwardTrigger='<tab>'
-    let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+    imap <C-l> <Plug>(coc-snippets-expand)
+    vmap <C-j> <Plug>(coc-snippets-select)
+    let g:coc_snippet_next = '<c-j>'
+    let g:coc_snippet_prev = '<c-k>'
+    imap <C-j> <Plug>(coc-snippets-expand-jump)
+    xmap <leader>x  <Plug>(coc-convert-snippet)
 
     " === VIM-TEX ===
     let g:tex_flavor  = 'latex'
@@ -298,9 +250,6 @@ call plug#end()
     let g:vim_markdown_folding_disabled = 1
     let g:vim_markdown_math = 1
     let g:vim_markdown_frontmatter = 1
-
-    " === MINIMAP ===
-    nnoremap <leader>m <cmd>MinimapToggle<cr>
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {

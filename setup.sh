@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 function get_distro() {
     cat /etc/*-release | uniq -u
 }
@@ -66,8 +68,6 @@ function zsh_setup() {
 
     cd "$SAVE_DIR"
 
-    chsh -s "$(which zsh)"
-
     set +e
 }
 
@@ -96,26 +96,7 @@ function link() {
     set +e
 }
 
-function fonts() {
-    set -e
-
-    git clone https://github.com/ryanoasis/nerd-fonts
-    cd nerd-fonts
-    ./install.sh meslo hack fira-code inconsolata terminus
-    cd ..
-    rm -rf nerd-fonts
-
-    set +e
-}
-
 install_packages 2> packages.log || echo "Failed to install packages!"
 link 2> link.log || echo "Failed to link configuration files!"
 zsh_setup 2> zsh.log || echo "Failed to setup ZSH."
 neovim_setup 2> nvim.log || echo "Failed to setup Neovim"
-
-shift 1
-for ARG in "$@"; do
-    if [ "$ARG" == "--fonts" ]; then
-        fonts
-    fi
-done

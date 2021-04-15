@@ -125,6 +125,7 @@ call plug#begin()
     Plug 'preservim/tagbar'
     Plug 'plasticboy/vim-markdown'
     Plug 'lervag/vimtex'
+    Plug 'honza/vim-snippets'
 call plug#end()
 
 " ======
@@ -232,12 +233,10 @@ call plug#end()
     nnoremap <leader>e <cmd>Files<cr>
     nnoremap <leader>n <cmd>tabnew<cr><cmd>Files<cr>
 
-    imap <C-l> <Plug>(coc-snippets-expand)
-    vmap <C-j> <Plug>(coc-snippets-select)
-    let g:coc_snippet_next = '<c-j>'
-    let g:coc_snippet_prev = '<c-k>'
-    imap <C-j> <Plug>(coc-snippets-expand-jump)
-    xmap <leader>x  <Plug>(coc-convert-snippet)
+    " === SNIPPETS ===
+    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k>     <Plug>(neosnippet_expand_target)
 
     " === VIM-TEX ===
     let g:tex_flavor  = 'latex'

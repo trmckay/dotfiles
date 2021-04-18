@@ -8,6 +8,13 @@ function sources() {
 function options() {
     export TERM=xterm-256color
     setopt correct
+    #load colors
+    autoload colors && colors
+    for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
+        eval $COLOR='%{$fg_no_bold[${(L)COLOR}]%}'  #wrap colours between %{ %} to avoid weird gaps in autocomplete
+        eval BOLD_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
+    done
+    eval RESET='%{$reset_color%}'
 }
 
 function plugins() {
@@ -54,7 +61,18 @@ init() {
 
 init
 
-# tmux on ssh sessions
-if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
-    exec tmux new-session -A -s SSH;
+# TMUX with new sessions
+if [[ -z "$TMUX" ]]; then
+    if [[ -n "$PS1" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+        exec tmux new-session -A -s SSH;
+    fi
+
+    pfetch
+    vared -p '${CYAN}[tmux]${RESET} Name session: ' -c SESSION_NAME
+
+    if [[ -n "$SESSION_NAME" ]] && [[ -z "$TMUX" ]]; then
+        exec tmux new-session -A -s $SESSION_NAME;
+    fi
+
+    clear
 fi

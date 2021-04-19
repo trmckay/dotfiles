@@ -57,24 +57,23 @@
     " shortcuts for quitting
     nnoremap <C-q> <cmd>qa!<cr>
     nnoremap <C-x> <cmd>wqa<cr>
-    nnoremap <C-w> <cmd>q<cr>
     " navigate splits
     nnoremap <C-j> <C-w>j
     nnoremap <C-k> <C-w>k
     nnoremap <C-l> <C-w>l
     nnoremap <C-h> <C-w>h
     " create splits
-    nnoremap <C-w> <cmd>vsplit<cr>
-    nnoremap <C-s> <cmd>split<cr>
+    nnoremap <C-w>v <cmd>vsplit<cr>
+    nnoremap <C-w>h <cmd>split<cr>
     " resize splits
     nnoremap <C-Down> <C-w>-
     nnoremap <C-Up> <C-w>+
     nnoremap <C-Right> <C-w>>
     nnoremap <C-Left> <C-w><
+    " tabs
+    nnoremap t <cmd>tabnew<cr>
     " exit terminal
     tnoremap <Esc> <C-\><C-n>
-    " project tree
-    nnoremap <leader>t <cmd>terminal tree<cr>
     " previous file
     nmap <leader>b <c-^><cr>
     " open file under cursor
@@ -231,7 +230,7 @@ call plug#end()
     " === FZF ===
     nnoremap <leader>f <cmd>Lines<cr>
     nnoremap <leader>e <cmd>Files<cr>
-    nnoremap <leader>n <cmd>tabnew<cr><cmd>Files<cr>
+    nnoremap <leader>t <cmd>tabnew<cr><cmd>Files<cr>
 
     " === SNIPPETS ===
     imap <C-k>     <Plug>(neosnippet_expand_or_jump)

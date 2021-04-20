@@ -45,6 +45,11 @@ function keybindings() {
     # fzf keybindings
     source /usr/share/fzf/shell/key-bindings.zsh 2> /dev/null ||\
     source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+    bindkey -s '^o' 'nvim $(fzf)^M'
+    bindkey -s '^f' 'clear; term="" && vared -p "${RED}ripgrep${RESET}: " -c term && rg -H "$term"^M'
+    bindkey -s '^e' 'clear; term="" && vared -p "${GREEN}fd-find${RESET}: " -c term && fd "$term"^M'
+    bindkey -s '^t' 'tn^M'
 }
 
 # initialize keybindings after vi-mode
@@ -67,13 +72,4 @@ if [[ -z "$TMUX" ]]; then
     if [[ -n "$PS1" ]] && [[ -n "$SSH_CONNECTION" ]]; then
         exec tmux new-session -A -s SSH;
     fi
-
-    pfetch
-    vared -p '${CYAN}[tmux]${RESET} Name session: ' -c SESSION_NAME
-
-    if [[ -n "$SESSION_NAME" ]] && [[ -z "$TMUX" ]]; then
-        exec tmux new-session -A -s $SESSION_NAME;
-    fi
-
-    clear
 fi

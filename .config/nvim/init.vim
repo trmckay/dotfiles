@@ -189,6 +189,7 @@ call plug#end()
     nmap <silent> gr CocCommand fzf-preview.CocReferences <cr>
     nmap <leader>rn <Plug>(coc-rename)
     nmap <leader>d <cmd>CocDiagnostics<cr>
+    nmap <leader>e <cmd>CocCommand explorer<cr>
     autocmd CursorHold * silent call CocActionAsync('highlight')
     nnoremap <silent> K :call <SID>show_documentation()<CR>
     function! s:show_documentation()
@@ -229,7 +230,7 @@ call plug#end()
 
     " === FZF ===
     nnoremap <leader>f <cmd>Lines<cr>
-    nnoremap <leader>e <cmd>Files<cr>
+    nnoremap <C-o> <cmd>Files<cr>
     nnoremap <leader>t <cmd>tabnew<cr><cmd>Files<cr>
 
     " === SNIPPETS ===

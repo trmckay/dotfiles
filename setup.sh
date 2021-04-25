@@ -56,6 +56,8 @@ function zsh_setup() {
 
     curl -fsSL https://starship.rs/install.sh | bash
 
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
     SAVE_DIR="$(pwd)"
     cd "$HOME"
 
@@ -67,6 +69,8 @@ function zsh_setup() {
     cd ..
 
     cd "$SAVE_DIR"
+
+    touch ~/.bw
 
     set +e
 }

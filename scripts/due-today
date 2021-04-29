@@ -1,5 +1,0 @@
-#!/bin/bash
-
-TODO_FILE="/home/trevor/Nextcloud/Notes/TODO.md"
-
-cat $TODO_FILE | grep $(date +"%Y-%m-%d") | sed 's/\* \[ \] //'

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -x
-set -e
-
-REPO="$(basename "$(pwd)")"
-ssh git@linode /git/bin/git-init "$REPO"
-git remote add origin git@linode:"$REPO"
-git push --set-upstream origin main

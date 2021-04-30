@@ -209,24 +209,13 @@ call plug#end()
     let g:asyncrun_open = 8
 
     " === PANDOC COMPILE w/ ASYNCRUN ===
-    let c_pandoc_beamer = 0
-    let c_pandoc_article = 0
-    function Cpa()
-        AsyncRun pandoc --pdf-engine=xelatex % -o /tmp/pandoc_article.pdf
+    let do_pandoc_compile = 0
+    function PandocCompile()
+        AsyncRun pandoc --pdf-engine=xelatex % -o "$(echo % | sed 's/\.md/\.pdf/')"
     endfunction
-    function Cpb()
-        AsyncRun pandoc --pdf-engine=xelatex -t beamer % -o /tmp/pandoc_beamer.pdf
-    endfunction
-    nnoremap <leader>do :let c_pandoc_article = 1 \| !pandoc --pdf-engine=xelatex % -o /tmp/pandoc_article.pdf; zathura /tmp/pandoc_article.pdf & <CR>
-    nnoremap <leader>bo :let c_pandoc_beamer = 1  \| !pandoc --pdf-engine=xelatex -t beamer % -o /tmp/pandoc_beamer.pdf; zathura /tmp/pandoc_beamer.pdf & <CR>
+    nnoremap <leader>do :let do_pandoc_compile = 1
     autocmd BufWritePost *.md
-        \ if c_pandoc_beamer  | call Cpb() | endif
-    autocmd BufWritePost *.md
-        \ if c_pandoc_article | call Cpa() | endif
-
-    " === TAGBAR ===
-    nmap <leader>i :TagbarToggle<CR>
-    autocmd BufNew *.{c,cpp,rs,h,py} TagbarOpen
+        \ if do_pandoc_compile | call PandocCompile() | endif
 
     " === FZF ===
     nnoremap <leader>f <cmd>Lines<cr>

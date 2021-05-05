@@ -59,10 +59,10 @@ function zvm_after_init() {
 
 # init in-order
 init() {
-    sources
     options
     plugins
     keybindings
+    sources
 }
 
 init

@@ -231,8 +231,6 @@ call plug#end()
     let g:tex_flavor  = 'latex'
     let g:tex_conceal = ''
     let g:vimtex_fold_manual = 1
-    let g:vimtex_compiler_progname = 'latexmk'
-    let g:vimtex_view_method = 'zathura'
 
     " === MARKDOWN ===
     let g:vim_markdown_folding_disabled = 1

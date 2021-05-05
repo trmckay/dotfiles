@@ -35,12 +35,12 @@ function plugins() {
 
 function keybindings() {
     # Better searching in command mode
-    bindkey -M vicmd '?' history-incremental-search-backward
-    bindkey -M vicmd '/' history-incremental-search-forward
+    # bindkey -M vicmd '?' history-incremental-search-backward
+    # bindkey -M vicmd '/' history-incremental-search-forward
 
     # Beginning search with arrow keys
-    bindkey '^[[A' up-line-or-search
-    bindkey '^[[B' down-line-or-search
+    # bindkey '^[[A' up-line-or-search
+    # bindkey '^[[B' down-line-or-search
 
     # fzf keybindings
     source /usr/share/fzf/shell/key-bindings.zsh 2> /dev/null ||\
@@ -49,7 +49,7 @@ function keybindings() {
     bindkey -s '^o' 'nvim $(fzf)^M'
     bindkey -s '^f' 'clear; term="" && vared -p "${RED}ripgrep${RESET}: " -c term && rg -H "$term"^M'
     bindkey -s '^e' 'clear; term="" && vared -p "${GREEN}fd-find${RESET}: " -c term && fd "$term"^M'
-    bindkey -s '^t' 'tn^M'
+    bindkey -s '^n' 'tn^M'
 }
 
 # initialize keybindings after vi-mode
@@ -62,7 +62,7 @@ init() {
     sources
     options
     plugins
-    # keybindings
+    keybindings
 }
 
 init

@@ -121,6 +121,7 @@ call plug#begin()
     Plug 'tpope/vim-surround'
     Plug 'sbdchd/neoformat'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
     Plug 'preservim/tagbar'
     Plug 'plasticboy/vim-markdown'
     Plug 'lervag/vimtex'
@@ -189,7 +190,7 @@ call plug#end()
     nmap <silent> gr CocCommand fzf-preview.CocReferences <cr>
     nmap <leader>rn <Plug>(coc-rename)
     nmap <leader>d <cmd>CocDiagnostics<cr>
-    nmap <leader>e <cmd>CocCommand explorer<cr>
+    " nmap <leader>e <cmd>CocCommand explorer<cr>
     autocmd CursorHold * silent call CocActionAsync('highlight')
     nnoremap <silent> K :call <SID>show_documentation()<CR>
     function! s:show_documentation()
@@ -204,6 +205,8 @@ call plug#end()
     nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
     nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
     nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+
+    nnoremap <leader>e <cmd>CHADopen<cr>
 
     " === ASYNCRUN ===
     let g:asyncrun_open = 8

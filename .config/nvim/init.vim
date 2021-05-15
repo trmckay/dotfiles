@@ -37,13 +37,6 @@
     set signcolumn=yes
     syntax on
 
-    " === LINE NUMBERS ===
-    augroup numbertoggle
-      autocmd!
-      autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-      autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-    augroup END
-
     " === COMMANDS ===
     cnoreabbrev W w
     cnoreabbrev Wq wq
@@ -118,6 +111,7 @@ call plug#begin()
     Plug 'junegunn/fzf.vim'
     Plug 'godlygeek/tabular'
     Plug 'skywind3000/asyncrun.vim'
+    Plug 'metakirby5/codi.vim'
     Plug 'tpope/vim-surround'
     Plug 'sbdchd/neoformat'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}

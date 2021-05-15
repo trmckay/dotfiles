@@ -13,13 +13,18 @@ alias governor="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor | head
 alias gpg-import="gpg --keyserver pool.sks-keyservers.net --recv-keys"
 alias gt='gitui'
 alias i3cfg="nvim ~/.config/i3/config"
-alias la="exa --icons -1 -l -F"
-alias ls="exa --icons"
 alias mkdir="mkdir -p"
 alias mounts="cd /run/media/trevor"
 alias netrst="sudo systemctl restart NetworkManager "
 alias path="nvim ~/.path; refresh"
 alias pls="sudo"
+alias ls='exa'
+alias exa='exa --icons'
+alias l='exa -lbF --git'
+alias ll='exa -lbGF --git'
+alias llm='exa -lbGF --git --sort=modified'
+alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'
+alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale'
 alias refresh="source ~/.zshrc; echo \"sourced ~/.zshrc\""
 alias rn='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias rustfmt-all='rustfmt $(find . -name "*.rs")'
@@ -27,8 +32,7 @@ alias sd="sudo"
 alias send2rm="article2pdf -e 'rmapi put % Articles' -u"
 alias svim="sudo -E nvim"
 alias sxrc="nvim ~/.config/sxhkd/sxhkdrc"
-alias todo="nvim ~/Nextcloud/TODO/Index.md"
-alias tree="tree -C"
+alias tree="exa --icons --tree"
 alias ts="task sync"
 alias tt="taskwarrior-tui"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"

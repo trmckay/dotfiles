@@ -8,23 +8,24 @@ alias clipout="xclip -o -selection clipboard"
 alias db='dropbox-cli'
 alias docker="sudo docker"
 alias dropbox='dropbox-cli'
+alias exa='exa --icons'
 alias gdb="gdb -q"
 alias governor="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor | head -1"
 alias gpg-import="gpg --keyserver pool.sks-keyservers.net --recv-keys"
 alias gt='gitui'
 alias i3cfg="nvim ~/.config/i3/config"
+alias l='exa -lbF --git'
+alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'
+alias ll='exa -lbGF --git'
+alias llm='exa -lbGF --git --sort=modified'
+alias ls='exa'
+alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale'
 alias mkdir="mkdir -p"
 alias mounts="cd /run/media/trevor"
+alias ms='mosh'
 alias netrst="sudo systemctl restart NetworkManager "
 alias path="nvim ~/.path; refresh"
 alias pls="sudo"
-alias ls='exa'
-alias exa='exa --icons'
-alias l='exa -lbF --git'
-alias ll='exa -lbGF --git'
-alias llm='exa -lbGF --git --sort=modified'
-alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'
-alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale'
 alias refresh="source ~/.zshrc; echo \"sourced ~/.zshrc\""
 alias rn='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias rustfmt-all='rustfmt $(find . -name "*.rs")'

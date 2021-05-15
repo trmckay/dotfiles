@@ -5,6 +5,7 @@ fd
 fzf
 gettext
 git
+git-delta
 gitui
 libtool
 ninja

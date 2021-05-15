@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [ -n $1 ]; then
-    grep "\S" $1
-    exit $?
-fi
-
-exit 1

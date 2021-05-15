@@ -15,19 +15,19 @@ function install_packages() {
     fi
 
     if [ -n "$PKG_PREFIX" ]; then
-        eval $PKG_PREFIX $(cat $PKG_FILE)
+        eval "$PKG_PREFIX" "$(cat $PKG_FILE)"
     fi
 }
 
 function neovim_setup() {
     git clone https://github.com/neovim/neovim
-    cd neovim
+    cd neovim || exit 1
     make CMAKE_BUILD_TYPE=RelWithDebInfo
     sudo make install
     sudo ln -svf /usr/local/bin/nvim /usr/local/bin/vim
     sudo ln -svf /usr/local/bin/nvim /usr/local/bin/vi
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    curl -fLo "$HOME/.local/share}/nvim/site/autoload/plug.vim" --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     nvim -c PlugClean -c PlugUpdate -c CocUpdate -c PlugInstall -c UpdateRemotePlugins -c qa!
     cd ..
     rm -rf neovim
@@ -37,7 +37,7 @@ function zsh_setup() {
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
     curl -fsSL https://starship.rs/install.sh | bash
     touch ~/.bw
-    chsh -s $(which zsh)
+    chsh -s "$(which zsh)"
 }
 
 install_packages || echo "Failed to install packages."

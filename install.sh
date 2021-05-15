@@ -6,8 +6,8 @@ function install_packages() {
     if command -v dnf; then
         PKG_PREFIX="sudo dnf upgrade -y && sudo dnf install -y"
         PKG_FILE="./pkg_lists/fedora.txt"
-    elif command -v apt; then
-        PKG_PREFIX="sudo apt update -y && sudo apt upgrade -y && sudo apt install -y"
+    elif command -v apt-get; then
+        PKG_PREFIX="sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get install -y"
         PKG_FILE="./pkg_lists/ubuntu.txt"
     elif command -v brew; then
         PKG_PREFIX="brew update && brew install"
@@ -37,7 +37,7 @@ function zsh_setup() {
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
     curl -fsSL https://starship.rs/install.sh | bash
     touch ~/.bw
-    chsh $(which zsh)
+    chsh -s $(which zsh)
 }
 
 install_packages || echo "Failed to install packages."

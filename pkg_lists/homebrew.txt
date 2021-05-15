@@ -1,0 +1,14 @@
+rust
+fd-find
+fzf
+git
+nodejs
+ranger
+ripgrep
+tmux
+ninja
+libtool
+automake
+cmake
+pkg-config
+gettext

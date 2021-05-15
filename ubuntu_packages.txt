@@ -1,1 +1,0 @@
-autoconf automake cargo ccls clang-format cmake fd-find fzf g++ gettext git libtool libtool-bin make ninja-build nodejs npm pkg-config ranger ripgrep tmux universal-ctags unzip zsh

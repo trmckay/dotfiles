@@ -1,6 +1,5 @@
 syntax enable
-let g:airline_powerline_fonts = 1
-let g:airline_theme = "gruvbox"
+set termguicolors
 
 set background=dark
 if ($THEME == "light")
@@ -16,3 +15,9 @@ colorscheme gruvbox
 hi clear SignColumn
 
 call togglebg#map("<F5>")
+
+lua << EOF
+require('lualine').setup {
+  options = {theme = 'gruvbox'},
+}
+EOF

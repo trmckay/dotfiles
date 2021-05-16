@@ -27,6 +27,7 @@ set cmdheight=1
 set updatetime=100
 set shortmess+=c
 set signcolumn=yes
+set mouse=a
 syntax on
 
 " Fix common typos
@@ -46,6 +47,7 @@ nnoremap <C-q> <cmd>qa!<cr>
 nnoremap <C-x> <cmd>wqa<cr>
 
 " Navigate splits
+" See ./tmux.vim
 " nnoremap <A-j> <C-w>j
 " nnoremap <A-k> <C-w>k
 " nnoremap <A-l> <C-w>l
@@ -62,7 +64,7 @@ nnoremap <C-l> <C-w>>
 nnoremap <C-h> <C-w><
 
 " New tab
-nnoremap t <cmd>tabnew<cr>
+nnoremap <C-t> <cmd>tabnew<cr>
 
 " Exit terminal
 tnoremap <Esc> <C-\><C-n>
@@ -82,6 +84,15 @@ set spelllang=en_us,de
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 nnoremap <leader>ss <cmd>set spell<cr>
 
+" Close pairs automatically
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
 let COC_ENABLE=1
 let TS_ENABLE=1
 
@@ -95,11 +106,10 @@ if TS_ENABLE
     source $NVIM_PREFIX/treesitter.vim
 endif
 
-source $NVIM_PREFIX/fzf.vim
 source $NVIM_PREFIX/latex.vim
 source $NVIM_PREFIX/look.vim
 source $NVIM_PREFIX/markdown.vim
 source $NVIM_PREFIX/neoformat.vim
-source $NVIM_PREFIX/tree.vim
+source $NVIM_PREFIX/navigation.vim
 source $NVIM_PREFIX/tmux.vim
 source $NVIM_PREFIX/codi.vim

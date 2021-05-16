@@ -5,13 +5,13 @@ set -x
 function install_packages() {
     if command -v dnf; then
         PKG_PREFIX="sudo dnf upgrade -y && sudo dnf install -y"
-        PKG_FILE="./pkg_lists/fedora.txt"
+        PKG_FILE="./extras/pkg_lists/fedora.txt"
     elif command -v apt-get; then
         PKG_PREFIX="sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get install -y"
-        PKG_FILE="./pkg_lists/ubuntu.txt"
+        PKG_FILE="./extras/pkg_lists/ubuntu.txt"
     elif command -v brew; then
         PKG_PREFIX="brew update && brew install"
-        PKG_FILE="./pkg_lists/homebrew.txt"
+        PKG_FILE="./extras/pkg_lists/homebrew.txt"
     fi
 
     if [ -n "$PKG_PREFIX" ]; then

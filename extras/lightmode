@@ -1,0 +1,2 @@
+cp ~/.config/kitty/kitty-base.conf ~/.config/kitty/kitty.conf
+cat ~/.config/kitty/gruvbox-material-light-medium.conf >> ~/.config/kitty/kitty.conf

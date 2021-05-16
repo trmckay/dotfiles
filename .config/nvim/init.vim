@@ -102,3 +102,4 @@ source $NVIM_PREFIX/markdown.vim
 source $NVIM_PREFIX/neoformat.vim
 source $NVIM_PREFIX/tree.vim
 source $NVIM_PREFIX/tmux.vim
+source $NVIM_PREFIX/codi.vim

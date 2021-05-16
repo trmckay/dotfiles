@@ -15,7 +15,7 @@ function install_packages() {
     fi
 
     if [ -n "$PKG_PREFIX" ]; then
-        eval "$PKG_PREFIX" "$(cat $PKG_FILE)"
+        eval "$PKG_PREFIX" "$(cat $PKG_FILE | sed ':a;N;$!ba;s/\n/ /g')"
     fi
 }
 

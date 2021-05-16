@@ -2,8 +2,8 @@ autoconf
 automake
 cargo
 ccls
-clang-format
 cmake
+curl
 fd-find
 fzf
 g++

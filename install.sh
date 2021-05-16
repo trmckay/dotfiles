@@ -26,8 +26,8 @@ function neovim_setup() {
     sudo make install
     sudo ln -svf /usr/local/bin/nvim /usr/local/bin/vim
     sudo ln -svf /usr/local/bin/nvim /usr/local/bin/vi
-    curl -fLo "$HOME/.local/share}/nvim/site/autoload/plug.vim" --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     nvim -c PlugClean -c PlugUpdate -c CocUpdate -c PlugInstall -c UpdateRemotePlugins -c qa!
     cd ..
     rm -rf neovim

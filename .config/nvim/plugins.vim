@@ -9,6 +9,7 @@ if COC_ENABLE
 endif
 
 Plug 'tpope/vim-commentary'
+Plug 'oberblastmeister/neuron.nvim' , { 'branch': 'unstable' }
 Plug 'windwp/nvim-autopairs'
 Plug 'numtostr/FTerm.nvim'
 Plug 'godlygeek/tabular'

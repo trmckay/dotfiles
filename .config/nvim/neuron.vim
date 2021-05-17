@@ -1,11 +1,17 @@
 lua << EOF
-require'neuron'.setup {
-    virtual_titles = true,
-    mappings = true,
-    run = nil,
-    neuron_dir = (require'plenary.scandir'.scan_dir('.', { search_pattern = "neuron.dhall", hidden = false, depth = 2 })[1]):gsub("/neuron.dhall", ""),
-    leader = "gz",
-}
+local nf = require'plenary.scandir'.scan_dir('.',
+    { search_pattern = "neuron.dhall", hidden = false, depth = 2 })
+
+if not(nf[1] == nil) then
+    local nd = (nf[1]):gsub("/neuron.dhall", "")
+    require'neuron'.setup {
+        virtual_titles = true,
+        mappings = true,
+        run = nil,
+        neuron_dir = nd,
+        leader = "gz",
+    }
+end
 EOF
 
  " click enter on [[my_link]] or [[[my_link]]] to enter it

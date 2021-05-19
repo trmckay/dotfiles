@@ -22,19 +22,23 @@ set hidden
 set nobackup
 set nowritebackup
 set nocompatible
-filetype plugin on
 set cmdheight=1
 set updatetime=100
 set shortmess+=c
 set signcolumn=yes
 set mouse=a
-syntax on
 
-" Fix common typos
+syntax on
+filetype plugin on
+
+" These kill me
 cnoreabbrev W w
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
 cnoreabbrev wQ wq
+cnoreabbrev Q q
+cnoreabbrev Lw w
+cnoreabbrev "w w
 
 " Remap leader key
 let mapleader = "\<Space>"
@@ -84,17 +88,8 @@ set spelllang=en_us,de
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 nnoremap <leader>ss <cmd>set spell<cr>
 
-" Close pairs automatically
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
-
-let COC_ENABLE=1
-let TS_ENABLE=1
+let COC_ENABLE=1 " Enable CoC
+let TS_ENABLE=1  " Enable treesitter
 
 source $NVIM_PREFIX/plugins.vim
 

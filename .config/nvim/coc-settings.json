@@ -43,10 +43,6 @@
   "python.sortImports.path": "~/.miniconda/envs/neovim/bin/isort",
   "python.jediPath": "~/.miniconda/envs/neovim/lib/python3.8/site-packages",
 
-  // snippets
-  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
-  //"snippets.userSnippetsDirectory": "~/.config/nvim/snips",
-
   // emmet
   "emmet.includeLanguages": {
     "vue-html": "html",
@@ -98,7 +94,7 @@
 
   "rust-analyzer.enable": true,
   "rust-analyzer.updates.channel": "stable",
-  "clangd.path": "/Users/trevor/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd"
+  "clangd.path": "/usr/bin/clangd",
 
   // TODO b:coc_suggest_disable=1 GOYO
   // TODO add to paths.vim g:coc_node_path

@@ -46,6 +46,4 @@ local opts = { noremap = true, silent = true }
 -- Closer to the metal
 map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
 map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
-
-require('nvim-autopairs').setup()
 EOF

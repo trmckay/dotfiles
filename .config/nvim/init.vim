@@ -108,3 +108,4 @@ source $NVIM_PREFIX/neoformat.vim
 source $NVIM_PREFIX/navigation.vim
 source $NVIM_PREFIX/tmux.vim
 source $NVIM_PREFIX/codi.vim
+source $NVIM_PREFIX/git.vim

@@ -4,7 +4,9 @@ export GIT_PAGER=delta
 
 export PATH="$PATH:\
 ${HOME}/.local/bin:\
-${HOME}/.cargo/bin:"
+${HOME}/.cargo/bin:\
+${HOME}/.local/opt/riscv/rv32i/bin:\
+${HOME}/.local/opt/riscv/rv64gc/bin"
 
 export NVIM_PREFIX=$HOME/.config/nvim
 
@@ -19,3 +21,4 @@ fi
 if [[ -n ~/.bw ]]; then
     source ~/.bw
 fi
+. "$HOME/.cargo/env"

@@ -5,6 +5,10 @@ source $HOME/.zsh_functions
 
 setopt correct
 
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=2000
+SAVEHIST=1000
+
 # Directory navigation.
 setopt autocd autopushd pushdignoredups
 

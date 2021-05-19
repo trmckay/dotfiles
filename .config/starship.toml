@@ -1,3 +1,5 @@
+command_timeout=86400
+
 format = """\\[$hostname::$directory\\] \
 $git_branch\
 $git_commit\

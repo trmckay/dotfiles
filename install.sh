@@ -35,6 +35,7 @@ function neovim_setup() {
 
 function zsh_setup() {
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    zplug install
     curl -fsSL https://starship.rs/install.sh | bash
     touch ~/.bw
     chsh -s "$(which zsh)"

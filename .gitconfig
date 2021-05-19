@@ -1,25 +1,33 @@
 [user]
-	email = trmckay@pm.me
-	name = Trevor McKay
+    email = trmckay@pm.me
+    name = Trevor McKay
 [color]
-	ui = true
+    ui = true
 [core]
-        pager = delta
+    pager = delta
 [pull]
-	rebase = false
+    rebase = false
+
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
 [init]
-	defaultBranch = main
+    defaultBranch = main
+
 [interactive]
     diffFilter = delta --color-only
+
 [delta]
     features = side-by-side line-numbers decorations
     whitespace-error-style = 22 reverse
+
 [delta "decorations"]
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
     file-decoration-style = none
+
+[alias]
+    root = rev-parse --show-toplevel

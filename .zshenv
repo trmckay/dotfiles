@@ -21,4 +21,5 @@ fi
 if [[ -n ~/.bw ]]; then
     source ~/.bw
 fi
-. "$HOME/.cargo/env"
+
+source "$HOME/.cargo/env"

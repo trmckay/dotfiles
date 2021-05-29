@@ -9,7 +9,7 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=2000
 SAVEHIST=1000
 
-# Directory navigation.
+# Directory navigation
 setopt autocd autopushd pushdignoredups
 
 # Completion
@@ -18,7 +18,7 @@ setopt automenu menucomplete
 zstyle ':completion:::::' completer _complete _approximate
 zstyle ':completion:*:approximate:*' max-errors 2
 
-# starship prompt (included in packages)
+# Starship prompt
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship.toml
 
@@ -31,19 +31,14 @@ bindkey -s '^n' 'tn^M'
 
 source ~/.zplug/init.zsh
 
+zplug "jeffreytse/zsh-vi-mode"
 zplug "mdumitru/fancy-ctrl-z"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "mdumitru/git-aliases"
 zplug "zpm-zsh/tmux"
-zplug "jeffreytse/zsh-vi-mode"
 zplug "zsh-users/zsh-completions"
 zplug "wookayin/fzf-fasd"
 zplug "unixorn/fzf-zsh-plugin"
-
-if [[ "$(hostname)" == "mbp.local" ]]; then
-    zplug "joow/macos"
-    zplug "digitalraven/omz-homebrew"
-fi
 
 TMUX_AUTOSTART=false
 TMUX_MOTD=true
@@ -51,3 +46,5 @@ TMUX_MOTD=true
 export KEYTIMEOUT=1
 
 zplug load
+
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')

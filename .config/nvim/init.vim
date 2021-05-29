@@ -94,11 +94,11 @@ let TS_ENABLE=1  " Enable treesitter
 source $NVIM_PREFIX/plugins.vim
 
 if COC_ENABLE
-    source $NVIM_PREFIX/coc.vim
+  source $NVIM_PREFIX/coc.vim
 endif
 
 if TS_ENABLE
-    source $NVIM_PREFIX/treesitter.vim
+  source $NVIM_PREFIX/treesitter.vim
 endif
 
 source $NVIM_PREFIX/latex.vim

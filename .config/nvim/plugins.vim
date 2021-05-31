@@ -9,6 +9,7 @@ if COC_ENABLE
 endif
 
 " General
+Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'metakirby5/codi.vim'
 Plug 'numtostr/FTerm.nvim'
@@ -32,6 +33,7 @@ Plug 'sbdchd/neoformat'
 " Navigation
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'preservim/tagbar'
+Plug 'kevinhwang91/rnvimr'
 
 " Look
 Plug 'kyazdani42/nvim-web-devicons'

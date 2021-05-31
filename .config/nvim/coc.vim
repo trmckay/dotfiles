@@ -16,7 +16,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr CocCommand fzf-preview.CocReferences <cr>
-nmap <leader>rn <Plug>(coc-rename)
+nmap <silent> <F2> <Plug>(coc-rename)
 nmap <leader>d <cmd>CocDiagnostics<cr>
 autocmd CursorHold * silent call CocActionAsync('highlight')
 nnoremap <silent> K :call <SID>show_documentation()<CR>

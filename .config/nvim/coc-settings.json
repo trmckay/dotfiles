@@ -94,6 +94,9 @@
 
   "rust-analyzer.enable": true,
   "rust-analyzer.updates.channel": "stable",
+  "rust.target": "riscv64gc-unknown-none-elf",
+  "rust.all_targets": false,
+
   "clangd.path": "/usr/bin/clangd",
 
   // TODO b:coc_suggest_disable=1 GOYO

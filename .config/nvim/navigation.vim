@@ -1,6 +1,3 @@
-" CHADTree
-nnoremap <leader>e <cmd>CHADopen<cr>
-
 lua require'bufferline'.setup{}
 
 " e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering

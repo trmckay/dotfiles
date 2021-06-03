@@ -1,6 +1,3 @@
-" CHADTree
-nnoremap <leader>e <cmd>CHADopen<cr>
-
 lua require'bufferline'.setup{}
 
 " e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
@@ -27,6 +24,9 @@ nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
+nnoremap <leader>r <cmd>RnvimrToggle<cr>
 
 lua << EOF
 require'FTerm'.setup({

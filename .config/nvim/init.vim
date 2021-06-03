@@ -27,6 +27,7 @@ set updatetime=100
 set shortmess+=c
 set signcolumn=yes
 set mouse=a
+set clipboard+=unnamedplus
 
 syntax on
 filetype plugin on

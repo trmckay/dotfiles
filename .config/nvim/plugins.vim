@@ -8,7 +8,7 @@ if COC_ENABLE
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
-" General
+Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'metakirby5/codi.vim'
 Plug 'numtostr/FTerm.nvim'
@@ -21,19 +21,11 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-commentary'
 Plug 'windwp/nvim-autopairs'
 Plug 'skywind3000/asyncrun.vim'
-
-" Typesetting
+Plug 'rhysd/vim-grammarous'
 Plug 'lervag/vimtex'
 Plug 'plasticboy/vim-markdown'
-
-" Formatting
 Plug 'sbdchd/neoformat'
-
-" Navigation
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'preservim/tagbar'
-
-" Look
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'hoob3rt/lualine.nvim'

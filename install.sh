@@ -41,6 +41,19 @@ function zsh_setup() {
     chsh -s "$(which zsh)"
 }
 
+function misc_packages() {
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    source $HOME/.cargo/env
+
+    cargo install exa gitui
+
+    git clone https://github.com/clvv/fasd
+    cd fasd || exit 1
+    PREFIX=$HOME/.local make install
+    cd .. || exit 1
+    rm -rf fasd
+}
+
 install_packages || echo "Failed to install packages."
 neovim_setup || echo "Failed to setup Neovim."
 zsh_setup || echo "Failed to setup ZSH."

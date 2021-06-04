@@ -1,0 +1,3 @@
+cargo-update
+exa
+gitui

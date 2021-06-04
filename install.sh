@@ -45,7 +45,9 @@ function misc_packages() {
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     source $HOME/.cargo/env
 
-    cargo install exa gitui
+    cargo install $(cat extras/pkg_lists/cargo.txt)
+
+    sudo npm install -g $(cat extras/pkg_lists/npm.txt)
 
     git clone https://github.com/clvv/fasd
     cd fasd || exit 1

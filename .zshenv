@@ -2,6 +2,8 @@ export EDITOR=nvim
 export BROWSER=firefox
 export GIT_PAGER=delta
 
+export TERM=xterm-256color
+
 export PATH="$PATH:\
 ${HOME}/.local/bin:\
 ${HOME}/.cargo/bin:\
@@ -22,4 +24,4 @@ if [[ -n ~/.bw ]]; then
     source ~/.bw
 fi
 
-source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"

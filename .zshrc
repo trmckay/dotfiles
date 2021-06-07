@@ -22,8 +22,6 @@ zstyle ':completion:*:approximate:*' max-errors 2
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship.toml
 
-eval "$(fasd --init auto)"
-
 bindkey -s '^o' 'nvim $(fzf)^M'
 bindkey -s '^f' 'clear; term="" && vared -p "${RED}ripgrep${RESET}: " -c term && rg -H "$term"^M'
 bindkey -s '^e' 'clear; term="" && vared -p "${GREEN}fd-find${RESET}: " -c term && fd "$term"^M'
@@ -37,7 +35,6 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "mdumitru/git-aliases"
 zplug "zpm-zsh/tmux"
 zplug "zsh-users/zsh-completions"
-zplug "wookayin/fzf-fasd"
 zplug "unixorn/fzf-zsh-plugin"
 
 TMUX_AUTOSTART=false

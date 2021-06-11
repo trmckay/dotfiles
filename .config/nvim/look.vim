@@ -20,20 +20,38 @@ call togglebg#map("<F5>")
 lua << EOF
 local lualine = require 'lualine'
 
+local colors
+
 -- Color table for highlights
-local colors = {
-  bg = '#1d2020',
-  fg = '#f9f5d7',
-  yellow = '#d79921',
-  cyan = '#8ec07c',
-  darkblue = '#83a598',
-  green = '#b8bb26',
-  orange = '#d65d0e',
-  violet = '#b16286',
-  magenta = '#d3869b',
-  blue = '#458588',
-  red = '#cc241d'
-}
+if vim.env.THEME == "light" then
+    colors = {
+      fg = '#1d2020',
+      bg = '#f9f5d7',
+      yellow = '#d79921',
+      cyan = '#8ec07c',
+      darkblue = '#83a598',
+      green = '#b8bb26',
+      orange = '#d65d0e',
+      violet = '#b16286',
+      magenta = '#d3869b',
+      blue = '#458588',
+      red = '#cc241d'
+    }
+else
+    colors = {
+      bg = '#1d2020',
+      fg = '#f9f5d7',
+      yellow = '#d79921',
+      cyan = '#8ec07c',
+      darkblue = '#83a598',
+      green = '#b8bb26',
+      orange = '#d65d0e',
+      violet = '#b16286',
+      magenta = '#d3869b',
+      blue = '#458588',
+      red = '#cc241d'
+    }
+end
 
 local conditions = {
   buffer_not_empty = function() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end,

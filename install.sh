@@ -28,7 +28,7 @@ function neovim_setup() {
     sudo ln -svf /usr/local/bin/nvim /usr/local/bin/vi
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    nvim -c PlugClean -c PlugUpdate -c CocUpdate -c PlugInstall -c UpdateRemotePlugins -c qa!
+    zsh -c 'nvim -c PlugInstall -c UpdateRemotePlugins -c qa!'
     cd ..
     rm -rf neovim
 }
@@ -48,14 +48,9 @@ function misc_packages() {
     cargo install $(cat extras/pkg_lists/cargo.txt)
 
     sudo npm install -g $(cat extras/pkg_lists/npm.txt)
-
-    git clone https://github.com/clvv/fasd
-    cd fasd || exit 1
-    PREFIX=$HOME/.local make install
-    cd .. || exit 1
-    rm -rf fasd
 }
 
 install_packages || echo "Failed to install packages."
-neovim_setup || echo "Failed to setup Neovim."
 zsh_setup || echo "Failed to setup ZSH."
+neovim_setup || echo "Failed to setup Neovim."
+misc_packages || echo "Failed to install extras."

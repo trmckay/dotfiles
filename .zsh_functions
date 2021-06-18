@@ -41,3 +41,11 @@ function create {
     touch "$FILE"
     nvim "$FILE"
 }
+
+function dcr {
+    if [[ "$1" == "down" || "$1" == "up" ]]; then
+        for DIR in $(find -type f -regex 'docker-compose\.(yml|yaml)'); do
+            (cd $(dirname $DIR) && docker-compose $1 -d)
+        done
+    fi
+}

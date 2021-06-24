@@ -45,3 +45,5 @@ export KEYTIMEOUT=1
 zplug load
 
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+
+eval "$(zoxide init zsh)"

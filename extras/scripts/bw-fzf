@@ -1,0 +1,27 @@
+#!/bin/bash
+
+source ~/.bw
+
+bw get item `\
+    bw list items |\
+    python3 -m json.tool |\
+    grep "\"name\": " |\
+    sed 's/        \"name\": \"//' |  sed 's/\",//' |\
+    fzf` |\
+python3 -m json.tool |\
+grep "\"password\": " |\
+sed 's/        \"password\": \"//' | sed 's/\",//' |\
+head -c-1 |\
+wl-copy
+
+# get password with bw
+# list all items
+# format JSON
+# search for "name" key
+# parse out name entry
+# select with fzf
+# bw outputs JSON, format it
+# search for "password" key
+# parse out password entry
+# remove trailing newline
+# copy to clipboard

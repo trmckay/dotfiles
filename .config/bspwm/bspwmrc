@@ -1,0 +1,36 @@
+#!/bin/sh
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+bspc config border_width 2
+bspc config window_gap 10
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config single_monocle       true
+
+# --------------------------------------------------------------------------------
+# RULES
+
+bspc rule -a \*:alacritty-popup:\* state=floating
+bspc rule -a \*:prompt:\* state=floating monitor=primary rectangle=600x40+0+0
+bspc rule -a \*:popup:\* follow=on state=floating monitor=primary rectangle=1200x800+0+0
+bspc rule -a feh state=floating follow=on
+bspc rule -a mpv state=floating monitor=primary rectangle=1280x720+0+0
+bspc rule -a URxvt:urxvt_keys_help state=floating
+bspc rule -a Toplevel state=floating
+bspc rule -a Gpicview state=floating
+bspc rule -a Todoist state=floating
+bspc rule -a floating state=floating
+bspc rule -a Nextcloud border=off
+
+bspc rule -a Preferences state=floating follow=on
+bspc rule -a dialog state=floating follow=on
+bspc rule -a menu state=floating follow=on
+bspc rule -a "pop-up" state=floating follow=on
+bspc rule -a task_dialog state=floating follow=on
+bspc rule -a bubble state=floating follow=on
+bspc rule -a Picture-in-Picture state=floating follow=on sticky=on
+
+$HOME/.autostart.sh > .session.log

@@ -1,0 +1,169 @@
+# terminal
+super + Return
+    kitty
+
+# app launcher
+super + @space
+    rofi -show drun
+
+# ssh menu
+super + shift + s
+    rofi -show ssh -terminal kitty
+
+# file browser
+super + e
+    kitty -e ranger
+
+# web browser
+super + w
+    firefox
+
+# authenticate with bitwarden
+super + a
+    bwmenu
+
+# volume up
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +10%
+
+# volume down
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -10%
+
+# audio pause/resume
+XF86AudioPlay
+    player-ctl play-pause
+
+# audio next
+XF86AudioNext
+    player-ctl next
+
+# audio previous
+XF86AudioPrev
+    player-ctl previous
+
+# mute audio
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# brightness up
+XF86MonBrightnessUp
+     xbacklight -inc 10
+
+# brightness down
+XF86MonBrightnessDown
+     xbacklight -dec 10
+
+# reload
+super + shift + r
+    pkill -USR1 -x sxhkd; \
+    bspc wm --restart
+
+# system control
+super + shift + q; {r, q}
+    systemctl {reboot, shutdown}
+
+# toggle light/dark color scheme
+super + shift + c; {d, l}
+    darkmode
+
+# close window
+super + q
+    bspc node -c
+
+# quit application
+alt + F4
+    bspc node -k
+
+# switch layout: t: tiled, T: psuedo tiled, F: floating, f: fullscreen
+super + {t, shift + t, shift+f, f}
+    bspc node -t {tiled, pseudo_tiled, floating, fullscreen}
+
+# set window as sticky
+super + alt + s
+    bspc node -g sticky
+
+# adjust gap size
+super + shift + {minus,equal}
+    bspc config -d focused window_gap $(( $(bspc config -d focused window_gap) {-,+} 5 ))
+
+# switch workspaces
+super + {_,shift + }{1-9,0}
+    monitor=$(bspc query -M --names -m focused); \
+    bspc {desktop -f,node -d} $monitor:'^'{1-9,10}
+
+# focus floating
+super + z
+    bspc node --focus next.floating
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+    mode={f,s}; \
+    direction={west,south,north,east}; \
+    monitor=$(bspc query -M --names -m $direction); \
+    if bspc query -N -n $direction -m focused > /dev/null; then \
+        bspc node -$mode $direction; \
+    else; \
+        if [ $mode = "f" ]; then \
+            bspc node -$mode $direction; \
+        else; \
+            bspc node -m $direction --follow; \
+        fi; \
+    fi
+
+# circulate windows
+super + c
+    bspc node @/ -C forward
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+    bspc desktop -f {prev,next}.local
+
+# focus next monitor
+super + \
+    bspc monitor -f next
+
+# send to next monitor
+super + shift + \
+    bspc node -d next:focused
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+    monitor=$(bspc query -M --names -m focused);\
+    bspc {desktop -f,node -d} $monitor:'^'{1-9,10}
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+    bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+# send the newest marked node to the newest preselected node
+super + y
+    bspc node focused -n newest.!automatic.local
+
+# hide window
+super + i
+    bspc node -g hidden -d ^1
+
+# unhide window
+super + shift + i
+    bspc node $(bspc query -N -n .hidden | tail -n 1) -g hidden=off -d focused -f

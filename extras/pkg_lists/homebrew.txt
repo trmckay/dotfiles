@@ -13,5 +13,4 @@ nodejs
 pkg-config
 ranger
 ripgrep
-rust
 tmux

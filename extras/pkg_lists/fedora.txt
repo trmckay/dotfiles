@@ -1,6 +1,5 @@
 autoconf
 automake
-cargo
 ccls
 cmake
 ctags-etags

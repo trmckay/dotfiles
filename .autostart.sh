@@ -2,57 +2,43 @@
 
 # start a program only if it is not already running
 function on_startup() {
-    if [ "$1" == "-o" ]; then
-        PATTERN="$2"
-        shift 2
+    if pgrep -x $(basename $1) > /dev/null; then
+        echo "$(basename $1) already running."
     else
-        PATTERN="$1"
-    fi
-    pgrep -x $PATTERN > /dev/null
-    if [ $? != 0 ]; then
-        echo "$@"
+        echo "$(basename $1) not running."
+        shift
+        echo "Executing '$@'."
         eval "$@" &
-    else
-        echo "$1 already running"
     fi
 }
 
 function on_reload() {
-    if [ "$1" == "-o" ]; then
-        PATTERN="$2"
-        shift 2
-    else
-        PATTERN="$1"
-    fi
-    pkill $PATTERN
-    echo "$@"
+    echo "Killing $(basename $1)."
+    pkill -x $(basename $1)
+    sleep 1
+    shift
+    echo "Executing $@."
     eval "$@" &
 }
 
 # polybar
-# ~/.config/polybar/launch.sh .config/polybar/polybar.ini
+on_reload polybar polybar main
 
 # keybinding daemon
-on_startup sxhkd
+on_startup sxhkd sxhkd
 
 # wallpaper
-nitrogen --restore &
+on_reload nitrogen nitrogen --restore
 
 # redshift
-# on_startup redshift -l 35.282753:-120.659615
+on_startup redshift redshift -l 35.282753:-120.659615
 
-# on_startup udiskie
+on_startup udiskie udiskie
 
-on_startup xautolock -detectsleep -time 10 -corners ---- -locker i3lock
+on_startup xautolock xautolock -detectsleep -time 10 -corners ---- -locker i3lock-fancy
 
-on_reload dunst
+on_reload dunst dunst
 
-on_startup picom \
-    --daemon \
-    --shadow \
-    --vsync \
-    --fading \
-    --fade-out-step=1 \
-    --fade-in-step=0.028 \
-    --fade-delta=5 \
-    --shadow-radius=16
+on_startup picom picom --daemon
+
+on_startup polkit-gnome-au /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

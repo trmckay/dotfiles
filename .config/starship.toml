@@ -59,8 +59,8 @@ style = "bold bright-cyan"
 truncate_to_repo = false
 
 [character]
-success_symbol = "[➜](blue)"
-error_symbol = "[➜](red)"
+success_symbol = "[\\$](blue)"
+error_symbol = "[\\$](red)"
 
 [rust]
 format = "via [$version](red bold) "

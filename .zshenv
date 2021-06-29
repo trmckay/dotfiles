@@ -12,16 +12,6 @@ ${HOME}/.local/opt/riscv/rv64gc/bin"
 
 export NVIM_PREFIX=$HOME/.config/nvim
 
-if [[ "$(hostname)" == "mbp.local" ]]; then
-    export PATH="$PATH:\
-    /usr/local/Cellar/neovim/0.4.4_2/bin:\
-    /usr/local/opt/openjdk/bin"
-
-    if [ -e /Users/trevor/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/trevor/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-fi
-
 if [[ -n ~/.bw ]]; then
     source ~/.bw
 fi
-
-. "$HOME/.cargo/env"

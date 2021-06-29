@@ -4,11 +4,11 @@ super + Return
 
 # app launcher
 super + @space
-    rofi -show drun
+    rofi -show drun -show-icons -icon-theme Papirus-Dark
 
 # ssh menu
 super + shift + s
-    rofi -show ssh -terminal kitty
+    rofi -show ssh -terminal kitty -show-icons -icon-theme Papirus-Dark
 
 # file browser
 super + e
@@ -21,30 +21,6 @@ super + w
 # authenticate with bitwarden
 super + a
     bwmenu
-
-# volume up
-XF86AudioRaiseVolume
-    pactl set-sink-volume @DEFAULT_SINK@ +10%
-
-# volume down
-XF86AudioLowerVolume
-    pactl set-sink-volume @DEFAULT_SINK@ -10%
-
-# audio pause/resume
-XF86AudioPlay
-    player-ctl play-pause
-
-# audio next
-XF86AudioNext
-    player-ctl next
-
-# audio previous
-XF86AudioPrev
-    player-ctl previous
-
-# mute audio
-XF86AudioMute
-    pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # brightness up
 XF86MonBrightnessUp
@@ -60,8 +36,8 @@ super + shift + r
     bspc wm --restart
 
 # system control
-super + shift + q; {r, q}
-    systemctl {reboot, shutdown}
+super + shift + q; {r, q, h, s}
+    systemctl {reboot, shutdown, hibernate, suspend}
 
 # toggle light/dark color scheme
 super + shift + c; {d, l}

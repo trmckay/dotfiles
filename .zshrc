@@ -27,7 +27,7 @@ bindkey -s '^f' 'clear; term="" && vared -p "${RED}ripgrep${RESET}: " -c term &&
 bindkey -s '^e' 'clear; term="" && vared -p "${GREEN}fd-find${RESET}: " -c term && fd "$term"^M'
 bindkey -s '^n' 'tn^M'
 
-source ~/.zplug/init.zsh
+source /usr/share/zsh/scripts/zplug/init.zsh
 
 zplug "jeffreytse/zsh-vi-mode"
 zplug "mdumitru/fancy-ctrl-z"

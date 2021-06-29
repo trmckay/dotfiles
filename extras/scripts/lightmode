@@ -1,2 +1,9 @@
+#!/bin/bash
+
+GTK_THEME=Orchis-light-compact
+THEME_FILE=".config/gtk-3.0/settings.ini"
+
 cp ~/.config/kitty/kitty-base.conf ~/.config/kitty/kitty.conf
 cat ~/.config/kitty/gruvbox-material-light-medium.conf >> ~/.config/kitty/kitty.conf
+
+sed -i "s/gtk-theme-name=.*/gtk-theme-name=$GTK_THEME/" $HOME/$THEME_FILE

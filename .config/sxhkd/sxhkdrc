@@ -12,7 +12,7 @@ super + shift + s
 
 # file browser
 super + e
-    kitty -e ranger
+    nemo
 
 # web browser
 super + w
@@ -36,12 +36,8 @@ super + shift + r
     bspc wm --restart
 
 # system control
-super + shift + q; {r, q, h, s}
-    systemctl {reboot, shutdown, hibernate, suspend}
-
-# toggle light/dark color scheme
-super + shift + c; {d, l}
-    darkmode
+super + shift + q; {r, q, h, s, l}
+    {systemctl reboot, systemctl hibernate, systemctl hibernate, systemctl suspend, loginctl lock-session}
 
 # close window
 super + q
@@ -143,3 +139,15 @@ super + i
 # unhide window
 super + shift + i
     bspc node $(bspc query -N -n .hidden | tail -n 1) -g hidden=off -d focused -f
+
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+ctrl + alt + t
+    $HOME/.local/bin/toggletheme
+
+super + o
+    open "$(fd --type f '.*' $HOME | rofi -dmenu)"

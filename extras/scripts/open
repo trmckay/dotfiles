@@ -1,0 +1,12 @@
+#!/bin/bash
+
+file="$1"
+filetype=$(xdg-mime query filetype "$file")
+application=$(xdg-mime query default "$filetype")
+desktop_file=/usr/share/applications/"$application"
+
+if grep -q -i 'terminal=true' "$desktop_file"; then
+    kitty -e xdg-open "$file"
+else
+    xdg-open "$file"
+fi

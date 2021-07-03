@@ -1,9 +1,18 @@
 #!/bin/bash
 
-GTK_THEME=Orchis-grey-dark-compact
-THEME_FILE=".config/gtk-3.0/settings.ini"
+GTK_THEME=Pop-dark
+ICON_THEME=Mint-Y-Dark-Teal
 
 cp ~/.config/kitty/kitty-base.conf ~/.config/kitty/kitty.conf
 cat ~/.config/kitty/gruvbox-material-dark-hard.conf >> ~/.config/kitty/kitty.conf
 
-sed -i "s/gtk-theme-name=.*/gtk-theme-name=$GTK_THEME/" $HOME/$THEME_FILE
+xfconf-query -c xsettings -p /Net/ThemeName -s "$GTK_THEME"
+xfconf-query -c xsettings -p /Net/IconThemeName -s "$ICON_THEME"
+
+sed -i 's/light/dark/' $HOME/.config/rofi/config.rasi
+
+cat $HOME/.config/polybar/colors-dark > $HOME/.config/polybar/config
+cat $HOME/.config/polybar/bar >> $HOME/.config/polybar/config
+
+pkill polybar
+polybar main &

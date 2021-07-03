@@ -12,7 +12,7 @@
     separator_color = frame
     sort = yes
     idle_threshold = 0
-    font = Fira Code Nerd Font Mono 12
+    font = Fira Code Nerd Font Mono 10
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
@@ -48,17 +48,17 @@
 [urgency_low]
     background = "#212121"
     frame_color = "#212121"
-    foreground = "#89b482"
-    timeout = 5
+    foreground = "#ffffff"
+    timeout = 2
 
 [urgency_normal]
     background = "#212121"
     frame_color = "#212121"
-    foreground = "#89b482"
-    timeout = 10
+    foreground = "#ffffff"
+    timeout = 4
 
 [urgency_critical]
     background = "#212121"
     frame_color = "#212121"
     foreground = "#bd2c40"
-    timeout = 0
+    timeout = 10

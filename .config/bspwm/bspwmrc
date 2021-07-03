@@ -23,7 +23,7 @@ bspc rule -a Toplevel state=floating
 bspc rule -a Gpicview state=floating
 bspc rule -a Todoist state=floating
 bspc rule -a floating state=floating
-bspc rule -a nemo state=floating
+bspc rule -a Nemo state=floating
 bspc rule -a Nextcloud border=off
 
 bspc rule -a Preferences state=floating follow=on

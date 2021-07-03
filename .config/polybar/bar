@@ -1,11 +1,3 @@
-[colors]
-background = #212121
-background-alt = #444
-foreground = #d4be98
-foreground-alt = #555
-primary = #89b482
-secondary = #ea6962
-alert = #bd2c40
 [bar/main]
 width = 100%
 height = 27

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if xfconf-query -c xsettings -p /Net/ThemeName | grep -q "dark"; then
+    eval $HOME/.local/bin/lightmode
+else
+    eval $HOME/.local/bin/darkmode
+fi
+
+for PID in `pgrep kitty`; do
+    kill -SIGUSR1 $PID
+done

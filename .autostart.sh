@@ -21,24 +21,24 @@ function on_reload() {
     eval "$@" &
 }
 
-# polybar
-on_reload polybar polybar main
-
-# keybinding daemon
-on_startup sxhkd sxhkd
-
-# wallpaper
 on_reload nitrogen nitrogen --restore
 
-# redshift
+on_reload polybar polybar main
+
+on_startup sxhkd sxhkd
+
 on_startup redshift redshift -l 35.282753:-120.659615
 
 on_startup udiskie udiskie
 
-on_startup xautolock xautolock -detectsleep -time 10 -corners ---- -locker i3lock-fancy
+on_startup xss-lock xss-lock --ignore-sleep -- i3lock-fancy
 
 on_reload dunst dunst
 
 on_startup picom picom --daemon
 
+on_startup nextcloud nextcloud
+
 on_startup polkit-gnome-au /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+on_startup xfsettingsd xfsettingsd

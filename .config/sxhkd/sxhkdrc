@@ -2,6 +2,9 @@
 super + Return
     kitty
 
+super + shift + Return
+    rofi-tmux
+
 # app launcher
 super + @space
     rofi -show drun -show-icons -icon-theme Papirus-Dark
@@ -151,3 +154,4 @@ ctrl + alt + t
 
 super + o
     open "$(fd --type f '.*' $HOME | rofi -dmenu)"
+

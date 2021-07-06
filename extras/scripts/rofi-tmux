@@ -1,0 +1,24 @@
+#!/bin/bash
+
+terminal=rofi-sensible-terminal
+
+tmux ls
+tmux_exit=$?
+
+# Are there tmux sessions?
+if [[ $tmux_exit -eq 1 ]]; then
+    lines=0
+else
+    lines=5
+fi
+
+# Select one with rofi.
+session=$(tmux ls | rofi -l $lines -p 'tmux' -dmenu | cut -d':' -f1)
+
+# If session is new, select a directory.
+if ! tmux ls | grep $session > /dev/null; then
+    cd "$(fd -t d '.*' $HOME | rofi -dmenu -l 10 -p 'working dir:')"
+fi
+
+# Attach to it, or create it if it's new.
+$terminal -e tmux new-session -A -s "$session"

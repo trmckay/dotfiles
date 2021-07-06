@@ -60,7 +60,7 @@ truncate_to_repo = false
 
 [character]
 success_symbol = "[%%](blue)"
-error_symbol = "[%%](red)"
+error_symbol = "[!](red)"
 
 [rust]
 format = "via [$version](red bold) "

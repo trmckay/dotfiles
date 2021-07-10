@@ -37,8 +37,8 @@ zplug "zpm-zsh/tmux"
 zplug "zsh-users/zsh-completions"
 zplug "unixorn/fzf-zsh-plugin"
 
-TMUX_AUTOSTART=false
-TMUX_MOTD=true
+TMUX_AUTOSTART=true
+TMUX_MOTD=false
 
 export KEYTIMEOUT=1
 

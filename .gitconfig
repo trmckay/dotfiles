@@ -18,7 +18,7 @@
     defaultBranch = main
 
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = delta --color-only --syntax-theme=gruvbox
 
 [delta]
     features = side-by-side line-numbers decorations

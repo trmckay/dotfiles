@@ -20,7 +20,7 @@ format = "[$user]($style)"
 style_user = "red"
 
 [git_branch]
-format=" [$symbol $branch::$remote_name]($style) "
+format=" [$symbol $remote_name/$branch]($style) "
 symbol=">>"
 always_show_remote = true
 style="magenta"

@@ -1,69 +1,41 @@
 command_timeout=86400
 
-format = """$username$hostname::$directory \
-$git_branch\
-$git_commit\
-$git_state\
-$git_status\
-$hg_branch\
-$docker_context\
-$package\
-$cmake\
-$dart\
-$dotnet\
-$elixir\
-$elm\
-$erlang\
-$golang\
-$helm\
-$java\
-$julia\
-$nim\
-$nodejs\
-$ocaml\
-$perl\
-$php\
-$purescript\
-$python\
-$ruby\
-$rust\
-$swift\
-$terraform\
-$zig\
-$nix_shell\
-$conda\
-$memory_usage\
-$aws\
-$gcloud\
-$openstack\
-$env_var\
-$crystal\
-$custom\
-$cmd_duration\
-$line_break\
-$lua\
+format = """ $username@$hostname:$directory$git_branch\
 $jobs\
 $battery\
 $time\
 $status\
+$line_break\
 $character"""
 
 [hostname]
 ssh_only = false
-format = "[$hostname](bold bright-red)"
+format = "[$hostname]($style)"
 disabled = false
+style = "red"
+
+[username]
+show_always = true
+format = "[$user]($style)"
+style_user = "red"
+
+[git_branch]
+format=" [$symbol $branch::$remote_name]($style) "
+symbol=">>"
+always_show_remote = true
+style="magenta"
 
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style)"
-style = "bold bright-cyan"
-truncate_to_repo = false
+truncate_to_repo = true
+style = "cyan"
+home_symbol = "~"
+read_only = " !"
 
 [character]
-success_symbol = "[%%](blue)"
-error_symbol = "[!](red)"
-
-[rust]
-format = "via [$version](red bold) "
+success_symbol = "[ λ](cyan)"
+error_symbol = "[!λ](red)"
+vicmd_symbol = "[:λ](green)"
 
 [cmd_duration]
-style = "blue"
+style = "cyan"

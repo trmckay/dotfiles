@@ -6,13 +6,15 @@ ICON_THEME=Mint-Y-Teal
 cp ~/.config/kitty/kitty-base.conf ~/.config/kitty/kitty.conf
 cat ~/.config/kitty/gruvbox-material-light-medium.conf >> ~/.config/kitty/kitty.conf
 
-xfconf-query -c xsettings -p /Net/ThemeName -s "$GTK_THEME"
-xfconf-query -c xsettings -p /Net/IconThemeName -s "$ICON_THEME"
+pkill -SIGUSR1 kitty
 
-sed -i 's/dark/light/' $HOME/.config/rofi/config.rasi
+# xfconf-query -c xsettings -p /Net/ThemeName -s "$GTK_THEME"
+# xfconf-query -c xsettings -p /Net/IconThemeName -s "$ICON_THEME"
 
-cat $HOME/.config/polybar/colors-light > $HOME/.config/polybar/config
-cat $HOME/.config/polybar/bar >> $HOME/.config/polybar/config
+# sed -i 's/dark/light/' $HOME/.config/rofi/config.rasi
 
-pkill polybar
-polybar main &
+# cat $HOME/.config/polybar/colors-light > $HOME/.config/polybar/config
+# cat $HOME/.config/polybar/bar >> $HOME/.config/polybar/config
+
+# pkill polybar
+# polybar main &

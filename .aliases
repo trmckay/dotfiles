@@ -3,7 +3,7 @@ alias :wq='exit'
 alias aliases="nvim ~/.aliases; refresh"
 alias atr="aclocal; autoconf; automake --add-missing"
 alias bsprc="nvim ~/.config/bspwm/bspwmrc"
-alias cat="bat --decorations never --theme gruvbox-dark"
+alias cat="bat --decorations never --theme gruvbox"
 alias charge="sudo system76-power charge-thresholds --profile full_charge"
 alias clip="xclip -selection clipboard"
 alias clipout="xclip -o -selection clipboard"
@@ -22,7 +22,7 @@ alias i3cfg="nvim ~/.config/i3/config"
 alias l='exa -lbF --git'
 alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'
 alias ld="lazydocker"
-alias less="bat --paging always --theme gruvbox-dark"
+alias less="bat --paging always --theme gruvbox"
 alias ll='exa -lbGF --git'
 alias llm='exa -lbGF --git --sort=modified'
 alias ls='exa'
@@ -45,7 +45,7 @@ alias t="taskwarrior-tui"
 alias tree="exa --icons --tree"
 alias ts="task sync"
 alias tt="taskwarrior-tui"
-alias upd="sudo dnf upgrade && flatpak update && cargo install-update -a"
+alias upd="sudo dnf upgrade && flatpak update"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias vi="nvim"
 alias vim="nvim"

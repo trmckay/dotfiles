@@ -45,8 +45,6 @@ function misc_packages() {
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     source $HOME/.cargo/env
 
-    cargo install $(cat extras/pkg_lists/cargo.txt)
-
     sudo npm install -g $(cat extras/pkg_lists/npm.txt)
 }
 

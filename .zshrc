@@ -22,11 +22,6 @@ zstyle ':completion:*:approximate:*' max-errors 2
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship.toml
 
-bindkey -s '^o' 'nvim $(fzf)^M'
-bindkey -s '^f' 'clear; term="" && vared -p "${RED}ripgrep${RESET}: " -c term && rg -H "$term"^M'
-bindkey -s '^e' 'clear; term="" && vared -p "${GREEN}fd-find${RESET}: " -c term && fd "$term"^M'
-bindkey -s '^n' 'tn^M'
-
 source $HOME/.zplug/init.zsh
 
 zplug "jeffreytse/zsh-vi-mode"
@@ -37,13 +32,37 @@ zplug "zpm-zsh/tmux"
 zplug "zsh-users/zsh-completions"
 zplug "unixorn/fzf-zsh-plugin"
 
-TMUX_AUTOSTART=true
+TMUX_AUTOSTART=false
 TMUX_MOTD=false
 
 export KEYTIMEOUT=1
 
 zplug load
 
-zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+function post_init() {
+    # Start a tmux session.
+    function _tmux {
+        session=$(tmux ls 2> /dev/null | fzf --print-query | cut -d':' -f1)
+        exists=$(echo $session | wc -l)
+        if [ $exists -ne 2 ]; then
+            session=$(echo $session | head -1)
+            if [ "$session" -eq "" ]; then
+                return 1
+            fi
+            cd "$(fd -t d '.*' . | fzf)" || return 1
+        else
+            session=$(echo $session | tail -1)
+        fi
+        tmux new-session -A -s "$session" || return 1
+    }
+    bindkey -s '^n' '_tmux^M'
+
+    # Open a file in nvim.
+    bindkey -s '^o' 'nvim $(fzf)^M'
+
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+}
+
+zvm_after_init_commands+=('post_init')
 
 eval "$(zoxide init zsh)"

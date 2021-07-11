@@ -1,3 +1,5 @@
+# vim: ft=zsh
+
 alias :q='exit'
 alias :wq='exit'
 alias aliases="nvim ~/.aliases; refresh"
@@ -50,7 +52,7 @@ alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias vi="nvim"
 alias vim="nvim"
 alias vimplug="nvim -c PlugClean -c PlugUpdate -c CocUpdate -c PlugInstall -c UpdateRemotePlugins -c qa!"
-alias vimrc="nvim ~/.config/nvim/init.vim"
+alias vimrc="(cd ~/.config/nvim && nvim ~/.config/nvim/init.vim)"
 alias vpnrst="sudo systemctl restart openvpn-client@surfshark-la-udp.service"
 alias wa="tungsten"
 alias wtr="curl wttr.in/93401"

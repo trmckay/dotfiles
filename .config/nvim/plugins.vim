@@ -1,13 +1,6 @@
 call plug#begin()
 
-if TS_ENABLE
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-endif
-
-if COC_ENABLE
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
-
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'metakirby5/codi.vim'
@@ -33,6 +26,11 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'rktjmp/lush.nvim'
 Plug 'npxbr/gruvbox.nvim'
 Plug 'rakr/vim-togglebg'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'neovim/nvim-lspconfig'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'hrsh7th/nvim-compe'
+Plug 'simrat39/rust-tools.nvim'
 
 call plug#end()
 

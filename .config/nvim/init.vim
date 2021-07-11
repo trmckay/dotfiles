@@ -51,13 +51,6 @@ nnoremap <leader>c <cmd>!less %<cr>
 nnoremap <C-q> <cmd>qa!<cr>
 nnoremap <C-x> <cmd>wqa<cr>
 
-" Navigate splits
-" See ./tmux.vim
-" nnoremap <A-j> <C-w>j
-" nnoremap <A-k> <C-w>k
-" nnoremap <A-l> <C-w>l
-" nnoremap <A-h> <C-w>h
-
 " Create splits
 nnoremap <C-w>v <cmd>vsplit<cr>
 nnoremap <C-w>h <cmd>split<cr>
@@ -89,19 +82,10 @@ set spelllang=en_us,de
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 nnoremap <leader>ss <cmd>set spell<cr>
 
-let COC_ENABLE=1 " Enable CoC
-let TS_ENABLE=1  " Enable treesitter
 
 source $NVIM_PREFIX/plugins.vim
-
-if COC_ENABLE
-  source $NVIM_PREFIX/coc.vim
-endif
-
-if TS_ENABLE
-  source $NVIM_PREFIX/treesitter.vim
-endif
-
+source $NVIM_PREFIX/lsp.lua
+source $NVIM_PREFIX/treesitter.vim
 source $NVIM_PREFIX/latex.vim
 source $NVIM_PREFIX/look.vim
 source $NVIM_PREFIX/markdown.vim
@@ -110,3 +94,4 @@ source $NVIM_PREFIX/navigation.vim
 source $NVIM_PREFIX/tmux.vim
 source $NVIM_PREFIX/codi.vim
 source $NVIM_PREFIX/git.vim
+source $NVIM_PREFIX/tree.vim

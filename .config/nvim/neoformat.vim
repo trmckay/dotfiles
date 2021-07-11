@@ -1,6 +1,6 @@
 augroup fmt
     autocmd!
-    autocmd BufWritePre *.{c,cpp,rs,h,py,glsl} undojoin | Neoformat
+    autocmd BufWritePre *.{c,cpp,rs,h,py,lua,vim} Neoformat
 augroup END
 let g:neoformat_cpp_clangformat = {
     \ 'exe': 'clang-format',

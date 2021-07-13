@@ -5,10 +5,11 @@ function tgz {
 }
 
 function ta {
-    SESSION=$(tmux ls | fzf | cut -d':' -f1)
-
-    if [[ -v SESSION ]]; then
-        tmux attach-session -t $SESSION
+    if tmux ls 2> /dev/null; then
+        session=$(tmux ls | fzf | cut -d':' -f1)
+        if [ $session != "" ]; then
+            tmux attach-session -t $session
+        fi
     fi
 }
 

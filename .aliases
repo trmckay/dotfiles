@@ -2,60 +2,54 @@
 
 alias :q='exit'
 alias :wq='exit'
-alias aliases="nvim ~/.aliases; refresh"
-alias atr="aclocal; autoconf; automake --add-missing"
-alias bsprc="nvim ~/.config/bspwm/bspwmrc"
-alias cat="bat --decorations never --theme gruvbox"
-alias charge="sudo system76-power charge-thresholds --profile full_charge"
-alias clip="xclip -selection clipboard"
-alias clipout="xclip -o -selection clipboard"
-alias db='dropbox-cli'
+alias rst="exec zsh"
+
+alias pls="sudo"
+alias sd="sudo"
+
+alias d="docker"
+alias dc="docker-compose"
 alias dcd="docker-compose down"
-alias dcu="docker-compose up"
-alias docked="sudo system76-power charge-thresholds --profile max_lifespan"
-alias docker="sudo docker"
-alias dropbox='dropbox-cli'
-alias exa='exa --icons'
+alias dcu="docker-compose up -d"
+alias ld="lazydocker"
+
 alias gdb="gdb -q"
-alias governor="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor | head -1"
-alias gpg-import="gpg --keyserver pool.sks-keyservers.net --recv-keys"
+
+alias mkdir="mkdir -p"
+
+alias pjson="python3 -m json.tool | bat --decorations never -l json"
+
+alias rn='ranger'
+
 alias gt='gitui'
-alias i3cfg="nvim ~/.config/i3/config"
+
+alias ts="task sync"
+alias t="taskwarrior-tui"
+alias tt="taskwarrior-tui"
+
+alias vi="nvim"
+alias vim="nvim"
+alias vplug="nvim -c 'PlugInstall | PlugClean | PlugUpdate | qa!'"
+
+alias zt="zathura"
+
+alias less="bat --paging always --theme gruvbox-dark"
+alias cat="bat --decorations never --theme gruvbox-dark"
+
+alias exa='exa --icons'
 alias l='exa -lbF --git'
 alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'
-alias ld="lazydocker"
-alias less="bat --paging always --theme gruvbox"
 alias ll='exa -lbGF --git'
 alias llm='exa -lbGF --git --sort=modified'
 alias ls='exa'
 alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale'
-alias mkdir="mkdir -p"
-alias mounts="cd /run/media/trevor"
-alias ms='mosh'
-alias netrst="sudo systemctl restart NetworkManager "
-alias path="nvim ~/.path; refresh"
-alias pjson="python3 -m json.tool | bat --decorations never -l json"
-alias pls="sudo"
-alias refresh="source ~/.zshrc; echo \"sourced ~/.zshrc\""
-alias rn='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-alias rustfmt-all='rustfmt $(find . -name "*.rs")'
-alias sd="sudo"
-alias send2rm="article2pdf -e 'rmapi put % Articles' -u"
-alias svim="sudo -E nvim"
-alias sxrc="nvim ~/.config/sxhkd/sxhkdrc"
-alias t="taskwarrior-tui"
 alias tree="exa --icons --tree"
-alias ts="task sync"
-alias tt="taskwarrior-tui"
-alias upd="sudo dnf upgrade && flatpak update"
-alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias vi="nvim"
-alias vim="nvim"
-alias vimplug="nvim -c PlugClean -c PlugUpdate -c CocUpdate -c PlugInstall -c UpdateRemotePlugins -c qa!"
-alias vimrc="(cd ~/.config/nvim && nvim ~/.config/nvim/init.vim)"
-alias vpnrst="sudo systemctl restart openvpn-client@surfshark-la-udp.service"
-alias wa="tungsten"
-alias wtr="curl wttr.in/93401"
-alias xresources="nvim ~/.Xresources; xrdb ~/.Xresources"
-alias zshrc="nvim ~/.zshrc; source ~/.zshrc"
-alias zt="zathura"
+
+alias edit="eval $EDITOR"
+alias sedit="sudo -E $EDITOR"
+alias zedit="edit ~/.zshrc && rst"
+alias fedit="edit ~/.zsh_functions && rst"
+alias aedit="edit ~/.aliases && rst"
+alias eedit="edit ~/.zshenv && rst"
+alias pedit="edit ~/.zprofile && rst"
+alias vedit="(cd ~/.config/nvim && nvim ~/.config/nvim/init.vim)"

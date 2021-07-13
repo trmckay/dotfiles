@@ -46,7 +46,7 @@ function post_init() {
         exists=$(echo $session | wc -l)
         if [ $exists -ne 2 ]; then
             session=$(echo $session | head -1)
-            if [ "$session" -eq "" ]; then
+            if [ "$session" == "" ]; then
                 return 1
             fi
             cd "$(fd -t d '.*' . | fzf)" || return 1

@@ -12,7 +12,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-commentary'
-Plug 'windwp/nvim-autopairs'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'rhysd/vim-grammarous'
 Plug 'lervag/vimtex'
@@ -36,5 +35,4 @@ call plug#end()
 
 lua << EOF
 require('gitsigns').setup()
-require('nvim-autopairs').setup()
 EOF

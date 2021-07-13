@@ -52,8 +52,8 @@ nnoremap <C-q> <cmd>qa!<cr>
 nnoremap <C-x> <cmd>wqa<cr>
 
 " Create splits
-nnoremap <C-w>v <cmd>vsplit<cr>
-nnoremap <C-w>h <cmd>split<cr>
+nnoremap <M-w> <cmd>vsplit<cr>
+nnoremap <M-s> <cmd>ssplit<cr>
 
 " Resize splits
 nnoremap <C-j> <C-w>-
@@ -72,7 +72,7 @@ nmap <leader>b <c-^><cr>
 
 " open file under cursor
 nnoremap gX :silent :execute
-        \ "!$HOME/Scripts/open" expand('%:p:h') . "/" . expand("<cfile>") " &"<cr>
+            \ "!$HOME/Scripts/open" expand('%:p:h') . "/" . expand("<cfile>") " &"<cr>
 
 " Remove trailing whitespace on write
 autocmd BufWritePre * %s/\s\+$//e

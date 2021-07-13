@@ -1,12 +1,12 @@
 #!/bin/bash
 
-GTK_THEME=Pop-dark
-ICON_THEME=Mint-Y-Dark-Teal
+# GTK_THEME=Pop-dark
+# ICON_THEME=Mint-Y-Dark-Teal
 
-cp ~/.config/kitty/kitty-base.conf ~/.config/kitty/kitty.conf
-cat ~/.config/kitty/gruvbox-material-dark-hard.conf >> ~/.config/kitty/kitty.conf
+# cp ~/.config/kitty/kitty-base.conf ~/.config/kitty/kitty.conf
+# cat ~/.config/kitty/gruvbox-material-dark-hard.conf >> ~/.config/kitty/kitty.conf
 
-pkill -SIGUSR1 kitty
+# pkill -SIGUSR1 kitty
 
 # xfconf-query -c xsettings -p /Net/ThemeName -s "$GTK_THEME"
 # xfconf-query -c xsettings -p /Net/IconThemeName -s "$ICON_THEME"

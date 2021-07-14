@@ -2,39 +2,71 @@
 
 alias :q='exit'
 alias :wq='exit'
-alias rst="exec zsh"
+alias rst='exec zsh'
 
-alias pls="sudo"
-alias sd="sudo"
+alias pls='sudo'
+alias sd='sudo'
 
-alias d="docker"
-alias dc="docker-compose"
-alias dcd="docker-compose down"
-alias dcu="docker-compose up -d"
-alias ld="lazydocker"
+function _dcr {
+    for context in $(find -type f -regex 'docker-compose\.(yml|yaml)'); do
+        (cd $(dirname $context) && docker-compose $@)
+    done
+}
 
-alias gdb="gdb -q"
+function dhalt {
+    if [ `docker ps -q | wc -l` -gt 0 ]; then
+        docker stop `docker ps -q`
+    fi
+}
 
-alias mkdir="mkdir -p"
+function drma {
+    if [ `docker container ls -q | wc -l` -gt 0 ]; then
+        docker rm `docker container ls -q`
+    fi
+}
 
-alias pjson="python3 -m json.tool | bat --decorations never -l json"
+function drmai {
+    docker system prune -a -f
+    if [ `docker image ls -q | wc -l` -gt 0 ]; then
+        docker rmi --force `docker image ls -q`
+    fi
+}
+
+function drman {
+    if [ `docker network ls -q | wc -l` -gt 0 ]; then
+        docker network rm `docker network ls -q`
+    fi
+}
+
+alias d='docker'
+alias dc='docker-compose'
+alias dcd='docker-compose down'
+alias dcu='docker-compose up -d'
+alias dcur='_dcr up -d'
+alias dcdr='_dcr down'
+alias drst='dhalt && drma && drmai && drman'
+alias lzd='lazydocker'
+alias derst_macos='killall -HUP com.docker.hyperkit'
+
+alias gdb='gdb -q'
+
+alias mkdir='mkdir -p'
+
+alias pjson='python3 -m json.tool | bat --decorations never -l json'
 
 alias rn='ranger'
 
 alias gt='gitui'
 
-alias ts="task sync"
-alias t="taskwarrior-tui"
-alias tt="taskwarrior-tui"
+alias ts='task sync'
+alias t='taskwarrior-tui'
+alias tt='taskwarrior-tui'
 
-alias vi="nvim"
-alias vim="nvim"
-alias vplug="nvim -c 'PlugInstall | PlugClean | PlugUpdate | qa!'"
 
-alias zt="zathura"
+alias zt='zathura'
 
-alias less="bat --paging always --theme gruvbox-dark"
-alias cat="bat --decorations never --theme gruvbox-dark"
+alias less='bat --paging always --theme gruvbox-dark'
+alias cat='bat --decorations never --theme gruvbox-dark'
 
 alias exa='exa --icons'
 alias l='exa -lbF --git'
@@ -43,13 +75,59 @@ alias ll='exa -lbGF --git'
 alias llm='exa -lbGF --git --sort=modified'
 alias ls='exa'
 alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale'
-alias tree="exa --icons --tree"
+alias tree='exa --icons --tree'
 
-alias edit="eval $EDITOR"
-alias sedit="sudo -E $EDITOR"
-alias zedit="edit ~/.zshrc && rst"
-alias fedit="edit ~/.zsh_functions && rst"
-alias aedit="edit ~/.aliases && rst"
-alias eedit="edit ~/.zshenv && rst"
-alias pedit="edit ~/.zprofile && rst"
-alias vedit="(cd ~/.config/nvim && nvim ~/.config/nvim/init.vim)"
+alias vplug='nvim -c "PlugInstall | PlugClean | PlugUpdate | qa!"'
+alias vim='nvim'
+alias vi='nvim'
+
+alias edit='eval $EDITOR'
+alias sedit='sudo -E $EDITOR'
+alias zedit='edit ~/.zshrc && rst'
+alias fedit='edit ~/.zsh_functions && rst'
+alias aedit='edit ~/.aliases && rst'
+alias eedit='edit ~/.zshenv && rst'
+alias pedit='edit ~/.zprofile && rst'
+alias vedit='(cd ~/.config/nvim && nvim ~/.config/nvim/init.vim)'
+
+function tgz {
+    tar cf - $2 | pigz > $1
+}
+
+function ta {
+    if tmux ls 2> /dev/null; then
+        session=$(tmux ls | fzf | cut -d':' -f1)
+        if [ $session != "" ]; then
+            tmux attach-session -t $session
+        fi
+    fi
+}
+
+function tn {
+    if [ "$1" ]; then
+        tmux new-session -A -s "$@"
+    else
+        tmux new-session -A -s "$(basename $(pwd))"
+    fi
+}
+
+function peek() {
+    if [ -d $1 ]; then
+        ls $1
+    else
+        less $1
+    fi
+}
+
+function wait_for {
+    while [ "$(pgrep $1)" ]; do
+        sleep 5;
+    done
+}
+
+function create {
+    file="$1"
+    dir="$(dirname $1)"
+    mkdir -p "$dir"
+    edit "$file"
+}

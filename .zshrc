@@ -1,7 +1,6 @@
 #!/bin/zsh
 
 source $HOME/.aliases
-source $HOME/.zsh_functions
 
 setopt correct
 

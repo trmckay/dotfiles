@@ -6,6 +6,8 @@ alias rst='exec zsh'
 
 alias pls='sudo'
 alias sd='sudo'
+alias esd='sudo -E'
+alias esudo='sudo -E -H'
 
 function _dcr {
     for context in $(find -type f -regex 'docker-compose\.(yml|yaml)'); do
@@ -51,6 +53,8 @@ alias derst_macos='killall -HUP com.docker.hyperkit'
 alias gdb='gdb -q'
 
 alias mkdir='mkdir -p'
+
+alias dig='dig +short'
 
 alias pjson='python3 -m json.tool | bat --decorations never -l json'
 

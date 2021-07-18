@@ -29,7 +29,6 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'neovim/nvim-lspconfig'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'hrsh7th/nvim-compe'
-Plug 'simrat39/rust-tools.nvim'
 
 call plug#end()
 

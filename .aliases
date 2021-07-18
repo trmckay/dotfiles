@@ -9,6 +9,8 @@ alias sd='sudo'
 alias esd='sudo -E'
 alias esudo='sudo -E -H'
 
+alias up='update.py'
+
 function _dcr {
     for context in $(find -type f -regex 'docker-compose\.(yml|yaml)'); do
         (cd $(dirname $context) && docker-compose $@)
@@ -92,7 +94,26 @@ alias fedit='edit ~/.zsh_functions && rst'
 alias aedit='edit ~/.aliases && rst'
 alias eedit='edit ~/.zshenv && rst'
 alias pedit='edit ~/.zprofile && rst'
-alias vedit='(cd ~/.config/nvim && nvim ~/.config/nvim/init.vim)'
+alias shedit='edit ~/.ssh/config'
+
+function exedit {
+    file=$(which $1)
+    if [ -n "$file" ]; then
+        edit $file
+    fi
+}
+
+function vedit {
+    cd $NVIM_PREFIX
+    if [ "$1" != "" ]; then
+        res=$(fd "$1" . | sed 's/\s.*//')
+        if [ $? -eq 0 ]; then
+            nvim $res
+            return
+        fi
+    fi
+    nvim init.vim
+}
 
 function tgz {
     tar cf - $2 | pigz > $1
